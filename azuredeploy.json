@@ -98,7 +98,7 @@
             }
         },
         "Viya SPRE VM Size": {
-            "defaultValue": "Standard_F8s_v3",
+            "defaultValue": "Standard_E8s_v3",
             "type": "String",
             "metadata": {
                 "description": "This is the SKU for the SPRE VM. The default SKU value represents the minimum recommended size for system stability in most SAS software license sets. The selected SKU must support premium disks. For details: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/red-hat/"
