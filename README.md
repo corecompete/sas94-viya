@@ -2,6 +2,9 @@
 # SAS 94 + Viya Quickstart Template for Azure
 This README for  SAS 94 + Viya Quickstart Template for Azure is used to deploy the following SAS 94 + Viya products in the Azure cloud:
 
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94ng-viya%2Fdevelop%2Fazuredeploy.json) 
+
+
 ## SAS 9 Components
 * SAS Enterprise BI Server 94
 * SAS Enterprise Miner 15.1
