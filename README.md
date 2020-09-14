@@ -52,6 +52,8 @@ The QuickStart will setup the following environment on Microsoft Azure:
 	* SAS Viya – Microservices, SPRE, CAS Controller and CAS Workers
 * Disks required for SAS Binaries, Configuration, and Data will be provisioned using Premium Disks in Azure.
 * Security groups for Virtual Machines and Subnets.
+* Accelerated Networking is enabled on all the network interfaces.
+* All the servers are placed in the same proximity placement group.
 
 
 <a name="Architecture"></a>
@@ -69,7 +71,8 @@ Before deploying SAS Quickstart Template for Azure, you must have the following:
 	SAS 9.4 software order details required to download the sasdepot.
  
 * A resource group that does not already contain a Quickstart deployment. For more information, see [Resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups).
-* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
+* All the Server types you select must support [Accelerated Networking](https://azure.microsoft.com/en-us/updates/accelerated-networking-in-expanded-preview/) and [Premium Storage](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types#premium-ssd)
+* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94grid-viya/blob/master/SAS-Quick-Start-On-Azure_v1.pdf) for more information.
 
 <a name="Download"></a>
 ### Download SAS Software for 9.4 and Viya
