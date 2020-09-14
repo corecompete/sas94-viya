@@ -1,8 +1,8 @@
 
 # SAS 94 + Viya Quickstart Template for Azure
-This README for  SAS 94 + Viya Quickstart Template for Azure is used to deploy the following SAS 94 + Viya products in the Azure cloud. Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for detailed steps.
+This README for  SAS 94 + Viya Quickstart Template for Azure is used to deploy the following SAS 94 + Viya products in the Azure cloud. Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for detailed steps.
 
-[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94ng-viya%2Fmaster%2Fazuredeploy.json) 
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json) 
 
 
 ## SAS 9 Components
@@ -52,8 +52,6 @@ The QuickStart will setup the following environment on Microsoft Azure:
 	* SAS Viya – Microservices, SPRE, CAS Controller and CAS Workers
 * Disks required for SAS Binaries, Configuration, and Data will be provisioned using Premium Disks in Azure.
 * Security groups for Virtual Machines and Subnets.
-* Accelerated Networking is enabled on all the network interfaces.
-* All the servers are placed in the same proximity placement group.
 
 
 <a name="Architecture"></a>
@@ -71,8 +69,7 @@ Before deploying SAS Quickstart Template for Azure, you must have the following:
 	SAS 9.4 software order details required to download the sasdepot.
  
 * A resource group that does not already contain a Quickstart deployment. For more information, see [Resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups).
-* All the Server types you select must support [Accelerated Networking](https://azure.microsoft.com/en-us/updates/accelerated-networking-in-expanded-preview/) and [Premium Storage](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types#premium-ssd)
-* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94grid-viya/blob/master/SAS-Quick-Start-On-Azure_v1.pdf) for more information.
+* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
 
 <a name="Download"></a>
 ### Download SAS Software for 9.4 and Viya
@@ -85,7 +82,7 @@ Before deploying SAS Quickstart Template for Azure, you must have the following:
 
 		mirrormgr  mirror  --deployment-data  <path-to-SAS_Viya_deployment_data>.zip --path <location-of-mirror-repository> --log-file mirrormgr.log --platform 64-redhat-linux-6  --latest
  
-* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
+* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
 
 <a name="Upload"></a>
 ### Upload the SAS Software to an Azure File Share
@@ -95,7 +92,7 @@ Before deploying SAS Quickstart Template for Azure, you must have the following:
 * Create two directories for SAS 9.4 and SAS Viya in the File share(eg: sasdepot and viyarepo)
 * Upload the SAS Software(sasdepot) to sasdepot folder. 
 * Get Storage Account Access key. Follow the Microsoft Azure instructions to "[view storage account access key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)"
-* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
+* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
  
 <a name="Best"></a>
 ### Best Practices When Deploying SAS Viya on Azure
@@ -108,8 +105,8 @@ We recommend the following as best practices:
 You can click the "Deploy to Azure" button at the beginning of this document or follow the instructions for a command-line (CLI) deployment using the scripts in the root of this repository.
 
 The deployment takes between 1.5 to 2 hours, depending on the quantity of software licensed.
-* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
+* Refer [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf) for more information.
 
 ## Usage
-* Refer section 5 in [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf)
-* SSH Tunneling, please refer section 7.2 in [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94ng-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf)
+* Refer section 5 in [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf)
+* SSH Tunneling, please refer section 7.2 in [SAS QuickStart Deployment Guide](https://github.com/corecompete/sas94-viya/blob/master/SAS-Quick-Start-on-Azure_v1.pdf)
