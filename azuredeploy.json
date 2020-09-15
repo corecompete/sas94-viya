@@ -1985,7 +1985,8 @@
             "name": "MetaAccessPolicy",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', variables('meta_vm_name'))]",
-                "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]"
+                "[resourceId('Microsoft.KeyVault/vaults', variables('key_vault_name'))]",
+                "[resourceID('Microsoft.Resources/deployments','AnsibleAccessPolicy')]"
             ],
             "properties": {
                 "mode": "Incremental",
