@@ -1,4 +1,3 @@
-
 # SAS 9.4 + Viya Quickstart Template for Azure
 
 [![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json) 
@@ -329,13 +328,13 @@ Here are some of the Key Locations and files that are useful for troubleshooting
 #### SAS 9.4 Environment
 |Directory Name |	Description/Purpose |	Location |
 | ------------- | ---------------------------- | ------------------------- |
-| RESPONSEFILES	| Location of Response files involved in SAS Deployment.  |	/opt/sas/resources/responsefiles |
-| SASDEPLOYMENT	| Location of SAS deployment. SAS Home and SAS Config directories reside here. |	/opt/sas/ | 
-| SASDEPOT	| Location of SAS Depot. |	/sasdepot (mounted as Azure file share in all Servers) |
-| SASDATA	| Location of SAS data, projects, source code, and applications. |	/sasdata |
-| SASWORK/SASUTIL |	Location of SAS workspace and temporary scratch area. This area will predominantly be used for transient and volatile data and technically emptied after the completion of job processing. |	<b>Compute Server:</b> /saswork |
-| SASBACKUP |	Location for SAS Backup and Recovery Tool backup vault. |	/opt/sas/backups |
-| DEPLOYMENTLOGS	| Location for Deployment Logs. Contains the logs for all phase-wise execution of Pre-Reqs, Install, Config, and Post Deployment scripts. |	/var/log/sas/install/ |
+| RESPONSE FILES	| Location of Response files involved in SAS Deployment.  |	/opt/sas/resources/responsefiles |
+| SAS DEPLOYMENT	| Location of SAS deployment. SAS Home and SAS Config directories reside here. |	/opt/sas/ | 
+| SAS DEPOT	| Location of SAS Depot. |	/sasdepot (mounted as Azure file share in all Servers) |
+| SAS DATA	| Location of SAS data, projects, source code, and applications. |	/sasdata |
+| SAS WORK/SASUTIL |	Location of SAS workspace and temporary scratch area. This area will predominantly be used for transient and volatile data and technically emptied after the completion of job processing. |	<b>Compute Server:</b> /saswork |
+| SAS BACKUP |	Location for SAS Backup and Recovery Tool backup vault. |	/opt/sas/backups |
+| DEPLOYMENT LOGS	| Location for Deployment Logs. Contains the logs for all phase-wise execution of Pre-Reqs, Install, Config, and Post Deployment scripts. |	/var/log/sas/install/ |
 #### SAS Viya Environment
 | Directory Name	|   Description/Purpose	          |   Location/Size           |
 | -------------     | ------------------------------- | ------------------------- |
