@@ -1,4 +1,4 @@
-# SAS 9.4 + Viya Quickstart Template for Azure
+# SAS® QUICKSTART ON MICROSOFT® AZURE
 
 [![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json) 
 
