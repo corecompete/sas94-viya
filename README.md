@@ -1,7 +1,7 @@
 # SAS® QUICKSTART ON MICROSOFT® AZURE
 
-[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
-[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fsas9.4-viya%2F%2Fazuredeploy.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fsas9.4-viya%2F%2Fazuredeploy.json)
 
 This README for SAS® 9.4 & SAS® Viya® Quickstart Template for Azure is used to deploy the following SAS 9.4 and SAS Viya products on Microsoft® Azure cloud.
 
@@ -251,7 +251,7 @@ Below is the list of the Parameters that would require to be filled during the d
 |   Key Vault Owner ID              |	Required Input	        |   Key Vault Owner Object ID Specifies the object ID of a user, service principal in the Azure Active Directory tenant. Obtain it by using Get-AzADUser or Get-AzADServicePrincipal cmdlets. e.g., In Azure Cloud PowerShell type PS>`Get-AzADUser -UserPrincipalName user@domain.com | grep Id`. It is recommended to give the user object id of whomever is deploying the QuickStart. |
 |   SSH Public key	                |   Required Input	        |   The SSH public key that will be added to all the servers.   |
 |   Location	                    |   [resourceGroup().location]	|   Azure Resources location, where all the SAS 9.4 and Viya resources should be created. e.g., servers, disks, IP's etc. The default value will pick up the same location as where the resource group is created. |
-|   _artifacts Location	            |   SAS 9.4 and SAS Viya: https://raw.githubusercontent.com/corecompete/sas94ng-viya/master/  | URL of the public repository where all the templates and dependant artifacts are located in. |
+|   _artifacts Location	            |   SAS 9.4 and SAS Viya: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sas9.4-viya/  | URL of the public repository where all the templates and dependant artifacts are located in. |
 |   SAS9.4 Data Storage – SAS Data	 |   Default:100<br>Min: 100<br>Max:32767 |	Storage Volume Size for SAS 9.4 Compute Server.   |
 |   SAS Viya Data Storage	        |   Default:100<br>Min: 100<br>Max:32767 |	Storage Volume Size for SAS Viya Cas Server.
 |   Admin Ingress Location	        |   Required Input	|   The CIDR block that can access the Ansible Controller/Bastion Host and Remote Desktop machine. We recommend that you set this value to a trusted IP range. For example, you might want to grant access only to your corporate network. |
