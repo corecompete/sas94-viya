@@ -1,6 +1,7 @@
 # SAS® QUICKSTART ON MICROSOFT® AZURE
 
-[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json) 
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
 
 This README for SAS® 9.4 & SAS® Viya® Quickstart Template for Azure is used to deploy the following SAS 9.4 and SAS Viya products on Microsoft® Azure cloud.
 
@@ -83,7 +84,7 @@ The QuickStart will setup the following environment on Microsoft Azure:
 
 <a name="Architecture"></a>
 ### Architecture Diagram
-![Architecture Diagram](Images/sas94-viya-architecture-diagram.svg)
+![Architecture Diagram](images/sas94-viya-architecture-diagram.svg)
 
 <a name="SAS9Components"></a>
 #### SAS 9.4 Components
@@ -420,33 +421,33 @@ Port forwarding via SSH (SSH tunneling) creates a secure connection between your
 ##### Step 1
 In your PuTTY configuration, configure the Public IP address and Port of your Ansible-Controller/Bastion Host Server. Ansible Controller IP and user details will be available in deployment output in the Azure portal
 
-![](Images/pubip_port.jpg)
+![](images/pubip_port.jpg)
 
 ##### Step 2: 
 In the SSH section, browse and select the vmuser private key.
 
-![](Images/vmuser_ppk.jpg)
+![](images/vmuser_ppk.jpg)
 
 
 ##### Step 3: 
 In the SSH section, select the Tunnels option and configure the RDP server private IP (ARM templates outputs) with 3389 port and source port as 50001(Random port in between 50001-60001) and click on Add.
 
-![](Images/source_destination.jpg)
+![](images/source_destination.jpg)
 
 ##### Step 4: 
 Make sure the entry has been correctly added, as shown below:
 
-![](Images/forward_ports.jpg)
+![](images/forward_ports.jpg)
 
 ##### Step 5: 
 Once all the configuration is updated, save the configuration and click on Open.
 
-![](Images/configuration.jpg)
+![](images/configuration.jpg)
 
 ##### Step 6: 
 Open an RDP connection and enter your local IP (127.0.0.1), along with the local port (i.e., Step3 Source Port) in PuTTY. The username will be (vmuser) and the password (SAS External Password Parameter Value).
 
-![](Images/rdp_connection.jpg)
+![](images/rdp_connection.jpg)
 
 <a name="security"></a>
 ## Appendix B: Security Considerations
@@ -486,3 +487,5 @@ Please reach out to <b>Diane Hatcher</b> (diane.hatcher@corecompete.com) and <b>
 <a name="ack"></a>
 ## Acknowledgements
 We are thankful to <b>Intel Corporation</b> for sponsoring this development effort. We are thankful to <b>SAS Institute</b> for supporting this effort and including providing technical guidance and validation.
+
+Tags: SAS, SAS 9.4, Viya, SAS Viya, Core Compete, corecompete, SAS 9.4 and Viya 
