@@ -197,10 +197,17 @@
             "metadata": {
                 "description": "For a standard deployment, keep the default.  The https URL to the base of the deployment files in Microsoft Azure. If a SAS key is needed, please do not include the SAS key in the URL. Instead, add the part after and include the question mark to the _artifactsLocationSasToken variable. ex. https://(STORAGE_ACCOUNT).file.core.windows.net/(SHARE_NAME)/(SUBDIRECTORY_NAME)/"
             }
-        }
+        },
+        "_artifactsLocationSasToken": {
+            "type": "securestring",
+            "defaultValue": "",
+            "metadata": {
+              "description": "For a standard deployment, leave empty. If you are running from a blob template, then provide the Shared Access Signature token (starting with a ?) that grants authorization to the private template. "
+            } 
+        },
     },
     "variables": {
-        "_artifactsLocationSasToken": "",
+        "_artifactsLocationSasToken": "[parameters('_artifactsLocationSasToken')]",
         "access_policy_template": "[concat(parameters('_artifactsLocation'),'nestedtemplates/access_policy.json', variables('_artifactsLocationSasToken'))]",
         "ansible_nw_interface": "[concat(parameters('SAS Application Name'),'_',variables('ansible_vm_name'),'_nic_',variables('resourceGroupUniqueString'))]",
         "ansible_nw_sg": "[concat(parameters('SAS Application Name'),'_',variables('ansible_vm_name'),'_nsg_',variables('resourceGroupUniqueString'))]",

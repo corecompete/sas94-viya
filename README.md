@@ -1,6 +1,7 @@
 # SAS® QUICKSTART ON MICROSOFT® AZURE
 
-[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json) 
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
 
 This README for SAS® 9.4 & SAS® Viya® Quickstart Template for Azure is used to deploy the following SAS 9.4 and SAS Viya products on Microsoft® Azure cloud.
 
@@ -83,7 +84,7 @@ The QuickStart will setup the following environment on Microsoft Azure:
 
 <a name="Architecture"></a>
 ### Architecture Diagram
-![Architecture Diagram](Images/sas94-viya-architecture-diagram.svg)
+![Architecture Diagram](images/sas94-viya-architecture-diagram.svg)
 
 <a name="SAS9Components"></a>
 #### SAS 9.4 Components
@@ -118,18 +119,18 @@ In Azure, instance sizes are based on virtual CPUs (vcpus) which equates to 2 vc
 ### SAS 9.4 Sizing
 Here are some recommended Machine Types for SAS 9.4 environment:
 
-For <b>Metadata Server</b>, We recommend <b> Standard_D8s_v3</b>
+For <b>Metadata Server</b>, We recommend <b> Standard_D8s_v3 or Standard_D8s_v4 (Standard_D8s_v3/v4)</b>
 
 For <b>Compute Server</b>, choose from this list, based on the number of physical cores you have licensed:
 
-| Licensed Cores  |	Virtual Machine   | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ----------------  | ----------------- | ----------------- |
-|   4	            |  Standard_E8s_v3  |	  64 GB           |	 128 GB           | 
-|   8	            |  Standard_E16s_v3 |	  128 GB          |  256 GB           |
-|   16	          |  Standard_E32s_v3 |	  256 GB          |	 512 GB           |
-|   32            |  Standard_E64s_v3 |   432 GB          |  864 GB           |
+| Licensed Cores  |	 Virtual Machine     | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | -------------------  | ----------------- | ----------------- |
+|   4	            |  Standard_E8s_v3/v4  |	  64 GB           |	 128 GB           | 
+|   8	            |  Standard_E16s_v3/v4 |	  128 GB          |  256 GB           |
+|   16	          |  Standard_E32s_v3/v4 |	  256 GB          |	 512 GB           |
+|   32            |  Standard_E64s_v3/v4 |   432 GB          |  864 GB           |
 
-For the <b>Mid-Tier server</b>, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: <b> Standard_E8s_v3, or Standard_D8s_v3</b>.
+For the <b>Mid-Tier server</b>, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: <b> Standard_E8s_v3/v4, or Standard_D8s_v3/v4</b>.
 
 <a name="ViyaSizing"></a>
 ### SAS Viya Sizing
@@ -138,31 +139,31 @@ For SAS Viya, here are the recommendations:
 <b>Microservices Server:</b>
 
 Choose a machine with minimum 4 physical cores and 60 GB memory. The recommended instance type is:
- * Standard_E8s_v3
+ * Standard_E8s_v3/v4
 
 <b>SPRE Server:</b>
 
 SPRE Server is responsible for the computational actions in the Viya environment. Choose a machine with a minimum of 8 virtual cores. In general, you should choose the same instance type as you use for the CAS worker below. The recommended instance types are:
 
-|  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ---------------- | ------------------ | ----------------- |
-|   8	          |  Standard_E8s_v3 |	64 GB             |  128 GB           |
-|   16	          |  Standard_E16s_v3 |	128 GB            |  256 GB           |
-|   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
-|   8             |  Standard_D8s_v3 | 32 GB             |  64 GB            |
-|   16             |  Standard_D16s_v3 | 64 GB             |  128 GB           |
-|   32            |  Standard_DS32_v3 | 128 GB            |  256 GB           |
+|  VCPUS 	  |	 Virtual Machine    | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ------------------- | ------------------ | ----------------- |
+|   8	          |  Standard_E8s_v3/v4 |	64 GB             |  128 GB           |
+|   16	          |  Standard_E16s_v3/v4 |	128 GB            |  256 GB           |
+|   32            |  Standard_E32s_v3/v4 |  256 GB           |  512 GB           |
+|   8             |  Standard_D8s_v3/v4 | 32 GB             |  64 GB            |
+|   16             |  Standard_D16s_v3/v4 | 64 GB             |  128 GB           |
+|   32            |  Standard_DS32_v3/v4 | 128 GB            |  256 GB           |
 
 
 <b>CAS Controller and Workers Nodes:</b>
 
 For <b>CAS Controller Server & Workes </b>, choose from this list for:
 
-|  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ---------------- | ------------------ | ----------------- |
-|   8	          |  Standard_E8s_v3 |	64 GB             |  128 GB           |
-|   16	          |  Standard_E16s_v3 |	128 GB            |  256 GB           |
-|   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
+|  VCPUS 	  |	 Virtual Machine    | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ------------------- | ------------------ | ----------------- |
+|   8	          |  Standard_E8s_v3/v4 |	64 GB             |  128 GB           |
+|   16	          |  Standard_E16s_v3/v4 |	128 GB            |  256 GB           |
+|   32            |  Standard_E32s_v3/v4 |  256 GB           |  512 GB           |
 
 
 
@@ -420,33 +421,33 @@ Port forwarding via SSH (SSH tunneling) creates a secure connection between your
 ##### Step 1
 In your PuTTY configuration, configure the Public IP address and Port of your Ansible-Controller/Bastion Host Server. Ansible Controller IP and user details will be available in deployment output in the Azure portal
 
-![](Images/pubip_port.jpg)
+![](images/pubip_port.jpg)
 
 ##### Step 2: 
 In the SSH section, browse and select the vmuser private key.
 
-![](Images/vmuser_ppk.jpg)
+![](images/vmuser_ppk.jpg)
 
 
 ##### Step 3: 
 In the SSH section, select the Tunnels option and configure the RDP server private IP (ARM templates outputs) with 3389 port and source port as 50001(Random port in between 50001-60001) and click on Add.
 
-![](Images/source_destination.jpg)
+![](images/source_destination.jpg)
 
 ##### Step 4: 
 Make sure the entry has been correctly added, as shown below:
 
-![](Images/forward_ports.jpg)
+![](images/forward_ports.jpg)
 
 ##### Step 5: 
 Once all the configuration is updated, save the configuration and click on Open.
 
-![](Images/configuration.jpg)
+![](images/configuration.jpg)
 
 ##### Step 6: 
 Open an RDP connection and enter your local IP (127.0.0.1), along with the local port (i.e., Step3 Source Port) in PuTTY. The username will be (vmuser) and the password (SAS External Password Parameter Value).
 
-![](Images/rdp_connection.jpg)
+![](images/rdp_connection.jpg)
 
 <a name="security"></a>
 ## Appendix B: Security Considerations
@@ -486,3 +487,5 @@ Please reach out to <b>Diane Hatcher</b> (diane.hatcher@corecompete.com) and <b>
 <a name="ack"></a>
 ## Acknowledgements
 We are thankful to <b>Intel Corporation</b> for sponsoring this development effort. We are thankful to <b>SAS Institute</b> for supporting this effort and including providing technical guidance and validation.
+
+Tags: SAS, SAS 9.4, Viya, SAS Viya, Core Compete, corecompete, SAS 9.4 and Viya 
