@@ -119,18 +119,18 @@ In Azure, instance sizes are based on virtual CPUs (vcpus) which equates to 2 vc
 ### SAS 9.4 Sizing
 Here are some recommended Machine Types for SAS 9.4 environment:
 
-For <b>Metadata Server</b>, We recommend <b> Standard_D8s_v3</b>
+For <b>Metadata Server</b>, We recommend <b> Standard_D8s_v3 or Standard_D8s_v4 (Standard_D8s_v3/v4)</b>
 
 For <b>Compute Server</b>, choose from this list, based on the number of physical cores you have licensed:
 
-| Licensed Cores  |	Virtual Machine   | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ----------------  | ----------------- | ----------------- |
-|   4	            |  Standard_E8s_v3  |	  64 GB           |	 128 GB           | 
-|   8	            |  Standard_E16s_v3 |	  128 GB          |  256 GB           |
-|   16	          |  Standard_E32s_v3 |	  256 GB          |	 512 GB           |
-|   32            |  Standard_E64s_v3 |   432 GB          |  864 GB           |
+| Licensed Cores  |	 Virtual Machine     | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | -------------------  | ----------------- | ----------------- |
+|   4	            |  Standard_E8s_v3/v4  |	  64 GB           |	 128 GB           | 
+|   8	            |  Standard_E16s_v3/v4 |	  128 GB          |  256 GB           |
+|   16	          |  Standard_E32s_v3/v4 |	  256 GB          |	 512 GB           |
+|   32            |  Standard_E64s_v3/v4 |   432 GB          |  864 GB           |
 
-For the <b>Mid-Tier server</b>, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: <b> Standard_E8s_v3, or Standard_D8s_v3</b>.
+For the <b>Mid-Tier server</b>, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: <b> Standard_E8s_v3/v4, or Standard_D8s_v3/v4</b>.
 
 <a name="ViyaSizing"></a>
 ### SAS Viya Sizing
@@ -139,31 +139,31 @@ For SAS Viya, here are the recommendations:
 <b>Microservices Server:</b>
 
 Choose a machine with minimum 4 physical cores and 60 GB memory. The recommended instance type is:
- * Standard_E8s_v3
+ * Standard_E8s_v3/v4
 
 <b>SPRE Server:</b>
 
 SPRE Server is responsible for the computational actions in the Viya environment. Choose a machine with a minimum of 8 virtual cores. In general, you should choose the same instance type as you use for the CAS worker below. The recommended instance types are:
 
-|  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ---------------- | ------------------ | ----------------- |
-|   8	          |  Standard_E8s_v3 |	64 GB             |  128 GB           |
-|   16	          |  Standard_E16s_v3 |	128 GB            |  256 GB           |
-|   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
-|   8             |  Standard_D8s_v3 | 32 GB             |  64 GB            |
-|   16             |  Standard_D16s_v3 | 64 GB             |  128 GB           |
-|   32            |  Standard_DS32_v3 | 128 GB            |  256 GB           |
+|  VCPUS 	  |	 Virtual Machine    | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ------------------- | ------------------ | ----------------- |
+|   8	          |  Standard_E8s_v3/v4 |	64 GB             |  128 GB           |
+|   16	          |  Standard_E16s_v3/v4 |	128 GB            |  256 GB           |
+|   32            |  Standard_E32s_v3/v4 |  256 GB           |  512 GB           |
+|   8             |  Standard_D8s_v3/v4 | 32 GB             |  64 GB            |
+|   16             |  Standard_D16s_v3/v4 | 64 GB             |  128 GB           |
+|   32            |  Standard_DS32_v3/v4 | 128 GB            |  256 GB           |
 
 
 <b>CAS Controller and Workers Nodes:</b>
 
 For <b>CAS Controller Server & Workes </b>, choose from this list for:
 
-|  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ---------------- | ------------------ | ----------------- |
-|   8	          |  Standard_E8s_v3 |	64 GB             |  128 GB           |
-|   16	          |  Standard_E16s_v3 |	128 GB            |  256 GB           |
-|   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
+|  VCPUS 	  |	 Virtual Machine    | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ------------------- | ------------------ | ----------------- |
+|   8	          |  Standard_E8s_v3/v4 |	64 GB             |  128 GB           |
+|   16	          |  Standard_E16s_v3/v4 |	128 GB            |  256 GB           |
+|   32            |  Standard_E32s_v3/v4 |  256 GB           |  512 GB           |
 
 
 
