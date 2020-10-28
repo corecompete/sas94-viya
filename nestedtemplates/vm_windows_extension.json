@@ -46,7 +46,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "[parameters('_artifactsLocation')]"
+            "[uri(parameters('_artifactsLocation'), concat('nestedtemplates/vm_windows_extension.json', parameters('_artifactsLocationSasToken')))]"
           ]
         },
         "protectedSettings": {

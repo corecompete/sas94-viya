@@ -1,7 +1,17 @@
 # SAS® QUICKSTART ON MICROSOFT® AZURE
 
-[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
-[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcorecompete%2Fsas94-viya%2Fmaster%2Fazuredeploy.json)
+![Azure Public Test Date](https://azurequickstartsservice.blob.core.windows.net/badges/sas9.4-viya/PublicLastTestDate.svg)
+![Azure Public Test Result](https://azurequickstartsservice.blob.core.windows.net/badges/sas9.4-viya/PublicDeployment.svg)
+
+![Azure US Gov Last Test Date](https://azurequickstartsservice.blob.core.windows.net/badges/sas9.4-viya/FairfaxLastTestDate.svg)
+![Azure US Gov Last Test Result](https://azurequickstartsservice.blob.core.windows.net/badges/sas9.4-viya/FairfaxDeployment.svg)
+
+![Best Practice Check](https://azurequickstartsservice.blob.core.windows.net/badges/sas9.4-viya/BestPracticeResult.svg)
+![Cred Scan Check](https://azurequickstartsservice.blob.core.windows.net/badges/sas9.4-viya/CredScanResult.svg)
+
+
+[![Deploy to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsas9.4-viya%2Fazuredeploy.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsas9.4-viya%2Fazuredeploy.json)
 
 This README for SAS® 9.4 & SAS® Viya® Quickstart Template for Azure is used to deploy the following SAS 9.4 and SAS Viya products on Microsoft® Azure cloud.
 
@@ -74,8 +84,8 @@ The QuickStart will setup the following environment on Microsoft Azure:
 * In the public subnet, a Linux bastion host acting as an Ansible Controller Host.
 * In the private subnet, a Remote Desktop instance acting as a Client Machine.
 * In the Application subnets (private subnet), Virtual Machines for:
-	* <b>SAS 9.4</b>  – Metadata, Compute, and Mid-Tier Servers
-	* <b>SAS Viya</b> – Microservices, SPRE, Cloud Analytic Services (CAS) Controller, and CAS Workers Servers
+	* **SAS 9.4**  – Metadata, Compute, and Mid-Tier Servers
+	* **SAS Viya** – Microservices, SPRE, Cloud Analytic Services (CAS) Controller, and CAS Workers Servers
 * Disks required for SAS Binaries, Configuration, and Data will be provisioned using Premium Disks in Azure.
 * Security groups for Virtual Machines and Subnets.
 * Accelerated Networking is enabled on all the network interfaces.
@@ -119,51 +129,51 @@ In Azure, instance sizes are based on virtual CPUs (vcpus) which equates to 2 vc
 ### SAS 9.4 Sizing
 Here are some recommended Machine Types for SAS 9.4 environment:
 
-For <b>Metadata Server</b>, We recommend <b> Standard_D8s_v3 or Standard_D8s_v4 (Standard_D8s_v3/v4)</b>
+For **Metadata Server**, We recommend ** Standard_D8s_v3**
 
-For <b>Compute Server</b>, choose from this list, based on the number of physical cores you have licensed:
+For **Compute Server**, choose from this list, based on the number of physical cores you have licensed:
 
-| Licensed Cores  |	 Virtual Machine     | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | -------------------  | ----------------- | ----------------- |
-|   4	            |  Standard_E8s_v3/v4  |	  64 GB           |	 128 GB           | 
-|   8	            |  Standard_E16s_v3/v4 |	  128 GB          |  256 GB           |
-|   16	          |  Standard_E32s_v3/v4 |	  256 GB          |	 512 GB           |
-|   32            |  Standard_E64s_v3/v4 |   432 GB          |  864 GB           |
+| Licensed Cores  |	Virtual Machine   | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ----------------  | ----------------- | ----------------- |
+|   4	            |  Standard_E8s_v3  |	  64 GB           |	 128 GB           | 
+|   8	            |  Standard_E16s_v3 |	  128 GB          |  256 GB           |
+|   16	          |  Standard_E32s_v3 |	  256 GB          |	 512 GB           |
+|   32            |  Standard_E64s_v3 |   432 GB          |  864 GB           |
 
-For the <b>Mid-Tier server</b>, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: <b> Standard_E8s_v3/v4, or Standard_D8s_v3/v4</b>.
+For the **Mid-Tier server**, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: ** Standard_E8s_v3, or Standard_D8s_v3**.
 
 <a name="ViyaSizing"></a>
 ### SAS Viya Sizing
 For SAS Viya, here are the recommendations:
 
-<b>Microservices Server:</b>
+**Microservices Server:**
 
 Choose a machine with minimum 4 physical cores and 60 GB memory. The recommended instance type is:
- * Standard_E8s_v3/v4
+ * Standard_E8s_v3
 
-<b>SPRE Server:</b>
+**SPRE Server:**
 
 SPRE Server is responsible for the computational actions in the Viya environment. Choose a machine with a minimum of 8 virtual cores. In general, you should choose the same instance type as you use for the CAS worker below. The recommended instance types are:
 
-|  VCPUS 	  |	 Virtual Machine    | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ------------------- | ------------------ | ----------------- |
-|   8	          |  Standard_E8s_v3/v4 |	64 GB             |  128 GB           |
-|   16	          |  Standard_E16s_v3/v4 |	128 GB            |  256 GB           |
-|   32            |  Standard_E32s_v3/v4 |  256 GB           |  512 GB           |
-|   8             |  Standard_D8s_v3/v4 | 32 GB             |  64 GB            |
-|   16             |  Standard_D16s_v3/v4 | 64 GB             |  128 GB           |
-|   32            |  Standard_DS32_v3/v4 | 128 GB            |  256 GB           |
+|  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ---------------- | ------------------ | ----------------- |
+|   8	          |  Standard_E8s_v3 |	64 GB             |  128 GB           |
+|   16	          |  Standard_E16s_v3 |	128 GB            |  256 GB           |
+|   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
+|   8             |  Standard_D8s_v3 | 32 GB             |  64 GB            |
+|   16             |  Standard_D16s_v3 | 64 GB             |  128 GB           |
+|   32            |  Standard_DS32_v3 | 128 GB            |  256 GB           |
 
 
-<b>CAS Controller and Workers Nodes:</b>
+**CAS Controller and Workers Nodes:**
 
-For <b>CAS Controller Server & Workes </b>, choose from this list for:
+For **CAS Controller Server & Workes **, choose from this list for:
 
-|  VCPUS 	  |	 Virtual Machine    | SKU	Memory (RAM)  |	Temporary Storage |
-| --------------- | ------------------- | ------------------ | ----------------- |
-|   8	          |  Standard_E8s_v3/v4 |	64 GB             |  128 GB           |
-|   16	          |  Standard_E16s_v3/v4 |	128 GB            |  256 GB           |
-|   32            |  Standard_E32s_v3/v4 |  256 GB           |  512 GB           |
+|  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
+| --------------- | ---------------- | ------------------ | ----------------- |
+|   8	          |  Standard_E8s_v3 |	64 GB             |  128 GB           |
+|   16	          |  Standard_E16s_v3 |	128 GB            |  256 GB           |
+|   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
 
 
 
@@ -205,19 +215,19 @@ The QuickStart deployment requires parameters related to the license file and SA
 
 #### Creating Azure Premium FileShare
 * Create Azure File Share with premium options. Follow the   Microsoft Azure instructions to "[Create a Premium File Share](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-premium-fileshare?tabs=azure-portal)"
-* Once the Azure Premium FileShare is created, create two new directories/folders for SAS 9.4 and SAS Viya - <b>"sasdepot" & "viyarepo"</b>
+* Once the Azure Premium FileShare is created, create two new directories/folders for SAS 9.4 and SAS Viya - **"sasdepot" & "viyarepo"**
 * Instructions to Mount FileShare on [Windows](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows), [Mac](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-mac) and [Linux](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-linux).
 
 #### SAS Software Upload
 * Once you SAS Software download is complete following the above instructions, copy/upload the complete SAS 9.4 Software depot to "sasdepot" directory. 
-* For Viya, copy/upload the downloaded mirror to "viyarepo" folder on fileshare and also upload the <b>SAS_Viya_deployment_data.zip</b> {emailed from SAS} to the same "viyarepo" folder where the viya software is located
+* For Viya, copy/upload the downloaded mirror to "viyarepo" folder on fileshare and also upload the **SAS_Viya_deployment_data.zip** {emailed from SAS} to the same "viyarepo" folder where the viya software is located
     
 #### SAS 9.4 License File
-* Check your SAS 9.4 license files under the <b>sid_files</b> directory in the SASDepot folder to see if the necessary SAS 9.4 license files are present. If not, please upload the SAS 9.4 License files into that directory (e.g. /storageaccountName/filesharename/sasdepot/sid_files/SAS94_xxxxxx_xxxxxxxx_LINUX_X86-64.txt). The license file will be named like SAS94_xxxxxx_xxxxxxxx_LINUX_X86-64.txt.
+* Check your SAS 9.4 license files under the **sid_files** directory in the SASDepot folder to see if the necessary SAS 9.4 license files are present. If not, please upload the SAS 9.4 License files into that directory (e.g. /storageaccountName/filesharename/sasdepot/sid_files/SAS94_xxxxxx_xxxxxxxx_LINUX_X86-64.txt). The license file will be named like SAS94_xxxxxx_xxxxxxxx_LINUX_X86-64.txt.
 
-<b>Note:</b> You might require values for some of the parameters that you need to provide while deploying this SAS QuickStart on Azure such as Storage Account Name, File Share Name, sasdepot folder, viyarepo folder, SAS Client license file, SAS Server license file, Storage Account Key
+**Note:** You might require values for some of the parameters that you need to provide while deploying this SAS QuickStart on Azure such as Storage Account Name, File Share Name, sasdepot folder, viyarepo folder, SAS Client license file, SAS Server license file, Storage Account Key
  
- <b>Get Storage Account Access key</b> - Follow the Microsoft Azure instructions to "[view storage account access key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)"
+ **Get Storage Account Access key** - Follow the Microsoft Azure instructions to "[view storage account access key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)"
 
  
 <a name="Best"></a>
@@ -251,7 +261,7 @@ Below is the list of the Parameters that would require to be filled during the d
 |   Key Vault Owner ID              |	Required Input	        |   Key Vault Owner Object ID Specifies the object ID of a user, service principal in the Azure Active Directory tenant. Obtain it by using Get-AzADUser or Get-AzADServicePrincipal cmdlets. e.g., In Azure Cloud PowerShell type PS>`Get-AzADUser -UserPrincipalName user@domain.com | grep Id`. It is recommended to give the user object id of whomever is deploying the QuickStart. |
 |   SSH Public key	                |   Required Input	        |   The SSH public key that will be added to all the servers.   |
 |   Location	                    |   [resourceGroup().location]	|   Azure Resources location, where all the SAS 9.4 and Viya resources should be created. e.g., servers, disks, IP's etc. The default value will pick up the same location as where the resource group is created. |
-|   _artifacts Location	            |   SAS 9.4 and SAS Viya: https://raw.githubusercontent.com/corecompete/sas94ng-viya/master/  | URL of the public repository where all the templates and dependant artifacts are located in. |
+|   _artifacts Location	            |   SAS 9.4 and SAS Viya: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sas9.4-viya/  | URL of the public repository where all the templates and dependant artifacts are located in. |
 |   SAS9.4 Data Storage – SAS Data	 |   Default:100<br>Min: 100<br>Max:32767 |	Storage Volume Size for SAS 9.4 Compute Server.   |
 |   SAS Viya Data Storage	        |   Default:100<br>Min: 100<br>Max:32767 |	Storage Volume Size for SAS Viya Cas Server.
 |   Admin Ingress Location	        |   Required Input	|   The CIDR block that can access the Ansible Controller/Bastion Host and Remote Desktop machine. We recommend that you set this value to a trusted IP range. For example, you might want to grant access only to your corporate network. |
@@ -281,7 +291,7 @@ SAS Users for Viya such sas and cas are created during the deployment. These are
 
 SAS Viya boot user account *sasboot* can be used to login to the application. You will have the URL to reset the password of *sasboot* useraccount from the outputs section on the successful deployment of the Quickstart. 
 
-<b>Note:</b>You need to bind your servers and SAS Viya Application with an LDAP Server.
+**Note:**You need to bind your servers and SAS Viya Application with an LDAP Server.
 
 
 
@@ -302,7 +312,7 @@ ssh root@<anyvmserver>
 
 <a name="sas9app"></a>
 ### Accessing SAS 9.4 Applicaiton
-The SAS 9.4 clients such as <b>SAS Enterprise Guide, DI Studio, SAS Enterprise Miner,</b> and <b>SAS Management Console</b> are installed on the Windows RDP. Log in to these applications using the sasdemo user. The password would be the one you specified in the template under the “SAS External Password parameter value.” 
+The SAS 9.4 clients such as **SAS Enterprise Guide, DI Studio, SAS Enterprise Miner,** and **SAS Management Console** are installed on the Windows RDP. Log in to these applications using the sasdemo user. The password would be the one you specified in the template under the “SAS External Password parameter value.” 
 
 <a name="viyaapp"></a>
 The SAS Viya Web applications can be accessed through the Web Brower on the RDP and directly through your browser via SSH Tunnel. See the Appendix section for Tunneling instructions. 
@@ -344,18 +354,18 @@ Here are some of the Key Locations and files that are useful for troubleshooting
 | SAS DEPLOYMENT	| Location of SAS deployment. SAS Home and SAS Config directories reside here. |	/opt/sas/ | 
 | SAS DEPOT	| Location of SAS Depot. |	/sasdepot (mounted as Azure file share in all Servers) |
 | SAS DATA	| Location of SAS data, projects, source code, and applications. |	/sasdata |
-| SAS WORK/SASUTIL |	Location of SAS workspace and temporary scratch area. This area will predominantly be used for transient and volatile data and technically emptied after the completion of job processing. |	<b>Compute Server:</b> /saswork |
+| SAS WORK/SASUTIL |	Location of SAS workspace and temporary scratch area. This area will predominantly be used for transient and volatile data and technically emptied after the completion of job processing. |	**Compute Server:** /saswork |
 | SAS BACKUP |	Location for SAS Backup and Recovery Tool backup vault. |	/opt/sas/backups |
 | DEPLOYMENT LOGS	| Location for Deployment Logs. Contains the logs for all phase-wise execution of Pre-Reqs, Install, Config, and Post Deployment scripts. |	/var/log/sas/install/ |
 #### SAS Viya Environment
 | Directory Name	|   Description/Purpose	          |   Location/Size           |
 | -------------     | ------------------------------- | ------------------------- |
-| PLAYBOOKS         |	Location of Ansible playbooks. The Ansible controller contains the main SAS deployment playbook, whereas the rest of the servers contain the Viya-ARK playbook required for Pre and Post Deployment tasks. |  <b>Ansible controller:</b> /sas/install/sas_viya_playbook    <b>MicroServices, SPRE, CAS Servers, worker nodes:</b> /opt/viya-ark |
+| PLAYBOOKS         |	Location of Ansible playbooks. The Ansible controller contains the main SAS deployment playbook, whereas the rest of the servers contain the Viya-ARK playbook required for Pre and Post Deployment tasks. |  **Ansible controller:** /sas/install/sas_viya_playbook    **MicroServices, SPRE, CAS Servers, worker nodes:** /opt/viya-ark |
 | SASDEPLOYMENT	    | Location of SAS deployment.	| /opt/sas  |
-|   SASREPO	    |   Location of a local mirror of the SAS repository (if a mirror is used).	|   <b>Ansible VM:</b> /sasdepot/viyarepo *(mounted shared directory on an Azure file share)*|
-|SASDATA	    |Location of SAS data, projects, source code, and applications.	|   <b>CASController VM:</b> /sasdata |
-|SASWORK/SASUTIL    |	Location of SAS workspace and temporary scratch area. This area will predominantly be used for transient and volatile data and technically emptied after the completion of job processing. | <b>SPRE VM:</b> /saswork |
-| SASCACHE  |	Location of CAS disk cache. |	<b>CAS Servers:</b> /cascache |
+|   SASREPO	    |   Location of a local mirror of the SAS repository (if a mirror is used).	|   **Ansible VM:** /sasdepot/viyarepo *(mounted shared directory on an Azure file share)*|
+|SASDATA	    |Location of SAS data, projects, source code, and applications.	|   **CASController VM:** /sasdata |
+|SASWORK/SASUTIL    |	Location of SAS workspace and temporary scratch area. This area will predominantly be used for transient and volatile data and technically emptied after the completion of job processing. | **SPRE VM:** /saswork |
+| SASCACHE  |	Location of CAS disk cache. |	**CAS Servers:** /cascache |
 | SASLOGS   |	Location of the SAS application log files.  |	/opt/sas/viya/config/var/log (also at /var/log/sas/viya)    |
 |SASBACKUP  |	Location for SAS Backup and Recovery Tool backup vault.	    | /backup   |
 |   DEPLOYMENTLOGS  |	Location for Deployment Logs. Contains the logs for all phase-wise execution of Pre-Reqs, Install, Config, and Post Deployment scripts. |	/var/logs/sas/install  *or* /sas/install/sas_viya_playbook/deployment.log |
@@ -471,21 +481,21 @@ SAS Quickstart for Azure uses the following network security groups to control a
 
 <a name="addDocs"></a>
 ## Additional Documentation
-<b>QuickStart Git Repository:</b>
+**QuickStart Git Repository:**
 [SAS 9.4 and Viya](https://github.com/corecompete/sas94-viya)
 
-<b>SAS 9.4 Documentation:</b> https://support.sas.com/documentation/94/
+**SAS 9.4 Documentation:** https://support.sas.com/documentation/94/
 
-<b>SAS Viya Documentation:</b>  https://support.sas.com/en/software/sas-viya.html#documentation
+**SAS Viya Documentation:**  https://support.sas.com/en/software/sas-viya.html#documentation
 
-<b>Azure Well Architected Framework:</b> https://docs.microsoft.com/en-us/azure/architecture/framework/
+**Azure Well Architected Framework:** https://docs.microsoft.com/en-us/azure/architecture/framework/
 
 <a name="feedback"></a>
 ## Send us Your Feedback
-Please reach out to <b>Diane Hatcher</b> (diane.hatcher@corecompete.com) and <b>Rohit Shetty</b> (rohit.shetty@corecompete.com) for any feedback or questions on the QuickStart.
+Please reach out to **Diane Hatcher** (diane.hatcher@corecompete.com) and **Rohit Shetty** (rohit.shetty@corecompete.com) for any feedback or questions on the QuickStart.
 
 <a name="ack"></a>
 ## Acknowledgements
-We are thankful to <b>Intel Corporation</b> for sponsoring this development effort. We are thankful to <b>SAS Institute</b> for supporting this effort and including providing technical guidance and validation.
+We are thankful to **Intel Corporation** for sponsoring this development effort. We are thankful to **SAS Institute** for supporting this effort and including providing technical guidance and validation.
 
-Tags: SAS, SAS 9.4, Viya, SAS Viya, Core Compete, corecompete, SAS 9.4 and Viya 
+Tags: SAS, SAS 9.4, Viya, SAS Viya, Core Compete, corecompete, SAS 9.4 and Viya
