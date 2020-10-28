@@ -50,7 +50,7 @@
         "protectedSettings": {
           "commandToExecute": "[parameters('commandToExecute')]",
           "fileUris": [
-            "[uri(parameters('_artifactsLocation'), concat('nestedtemplates/vm_linux_extension.json', parameters('_artifactsLocationSasToken')))]"
+            "[uri(parameters('_artifactsLocation'), parameters('_artifactsLocationSasToken'))]"
           ]
         }
       }
