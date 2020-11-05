@@ -85,7 +85,7 @@
         "primaryUserName": {
             "type": "string",
             "metadata": {
-                "description": "The SAS data volume size for SAS 94"
+                "description": "Username for the Virtual Machine."
             },
             "defaultValue": "vmuser"
         },        
