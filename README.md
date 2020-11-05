@@ -30,30 +30,30 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
     - [SAS 9.4 Components](#sas-94-components)
     - [SAS Viya Components](#sas-viya-components)
   - [Cost and Licenses](#cost-and-license)
-	- [SAS 9.4 Sizing](#sas-9.4-sizing)
+	- [SAS 9.4 Sizing](#sas-94-sizing)
 	- [SAS Viya Sizing](#sas-viya-sizing)    
   - [Prerequisites](#prerequisites)
-    - [Download SAS Software for 9.4 and Viya](#Download)
+    - [Download SAS Software for 9.4 and Viya](#Download-SAS-Software-for-94-and-Viya)
     - [Upload the SAS Software to an Azure File Share](#Upload-the-SAS-Software-to-an-Azure-File-Share)
   - [Best Practices When Deploying SAS Viya on Azure](#Best-Practices-When-Deploying-SAS-Viya-on-Azure)
   - [Deployment Steps](#Deployment-Steps)
-  - [Additional Deployment Details](Additional-Deployment-Details)
+  - [Additional Deployment Details](#Additional-Deployment-Details)
     - [User Accounts](#user-accounts)
   - [Usage](#usage)
     - [Remote Desktop Login](#remote-desktop-login)
-    - [Accessing SAS 9.4 Application](#Accessing-SAS-Application)
-    - [Accessing SAS Viya Application](#accessing-SAS-Viya-Application)
+    - [Accessing SAS 9.4 Application](#Accessing-SAS-94-Application)
+    - [Accessing SAS Viya Application](#Accessing-SAS-Viya-Application)
     - [Review QuickStart Deployment Outputs](#review-quickstart-deployment-outputs)
   - [Troubleshooting](#troubleshooting)
     - [Important File and Folder Locations](#important-file-and-folder-locations)
     - [Review the Log Files](#review-the-log-files)
-    - [Review SAS 9.4 Services Log Files](#Review-SAS94-Services-Log-Files)
+    - [Review SAS 9.4 Services Log Files](#Review-SAS-94-Services-Log-Files)
     - [Review SAS Viya Services Log Files](#Review-SAS-Viya-Services-Log-Files)
-    - [Restart SAS 9.4 Services](#Restart-SAS94-Services)
+    - [Restart SAS 9.4 Services](#Restart-SAS-94-Services)
     - [Restart SAS Viya Services](#Restart-SAS-Viya-Services)
   - [Appendix](#appendix)
-    - [Appendix A: SSH Tunneling](#Appendix-ssh-tunneling)
-    - [Appendix B: Security Considerations](#Appendix-security-considerations)
+    - [Appendix A: SSH Tunneling](#Appendix-A:-SSH-Tunneling)
+    - [Appendix B: Security Considerations](#Appendix-B:-Security-Considerations)
   - [Additional Documentation](#additional-documentation)
   - [Send us Your Feedback](#send-us-your-feedback)
   - [Acknowledgements](#acknowledgements)
@@ -104,7 +104,7 @@ SAS Viya Quick Start bootstraps the infrastructure required for SAS Viya MPP sys
 
 The template will run with pre-requisites to install SAS Viya on these servers and then deploy SAS Viya on the system.
 
-## Cost & Licenses
+## Cost and Licenses
 The user is responsible for the cost of the Azure Cloud services used while running this QuickStart deployment. There is no additional cost for using the QuickStart. You will need a SAS license (emailed from SAS for SAS 9.4 and SAS Viya) to launch this QuickStart. Your SAS account team can advise on the appropriate software licensing and sizing to meet the workload and performance needs. SAS software is typically licensed on maximum number of physical cores for the computational engine.
 
 In Azure, instance sizes are based on virtual CPUs (vcpus) which equates to 2 vcpus per physical core. We provide recommended instance types and sizes, based on physical cores, as a starting point for this deployment. It is important to use server types that support Accelerated Networking and Premium Storage features. You may choose to use larger instances as recommended by SAS sizing guidelines, but we recommend using the instance series noted.
