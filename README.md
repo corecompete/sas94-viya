@@ -23,7 +23,7 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
 
 ## Contents
 - [SAS® 9.4 and SAS Viya® Quickstart Template for Azure](#sas94-viya-quickstart-template-for-azure)
-  - [Solution Summary](#Summary)
+  - [Solution Summary](#solution-summary)
     - [Objective](#Objective)
     - [Architecture Overview](#Overview)
     - [Architecture Diagram](#Architecture)
@@ -59,7 +59,7 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
   - [Acknowledgements](#ack)
 
 
-<a name="Summary"></a>
+
 ## Solution Summary
 This QuickStart is intended to help SAS® customers deploy a cloud-native environment that provides both SAS® 9.4 platform and the SAS® Viya® 3.5 platform in an integrated environment. It is intended to provide an easy way for customers to get a comprehensive SAS environment, that will likely result in faster migrations and deployments into the Microsoft® Azure environment. The SAS ecosystem is deployed on the Azure platform, leveraging Azure native deployment approaches. As part of the deployment, you get all the powerful data management, analytics, and visualization capabilities of SAS, deployed on a high-performance infrastructure.
 
