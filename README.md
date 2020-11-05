@@ -289,10 +289,10 @@ ssh root@<anyvmserver>
 4.	RDP to the Windows Server using the user(vmuser) and password (SAS External Password parameter value).
 
 
-### Accessing SAS 9.4 Applicaiton
+### Accessing SAS 9.4 Application
 The SAS 9.4 clients such as **SAS Enterprise Guide, DI Studio, SAS Enterprise Miner,** and **SAS Management Console** are installed on the Windows RDP. Log in to these applications using the sasdemo user. The password would be the one you specified in the template under the “SAS External Password parameter value.” 
 
-
+### Accessing SAS Viya Application
 The SAS Viya Web applications can be accessed through the Web Brower on the RDP and directly through your browser via SSH Tunnel. See the Appendix section for Tunneling instructions. 
 
 
