@@ -23,12 +23,12 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
 
 ## Contents
 - [SAS® 9.4 and SAS Viya® Quickstart Template for Azure](#sas94-viya-quickstart-template-for-azure)
-  - [Solution Summary][]
-    - [Objective][]
-    - [Architecture Overview][]
-    - [Architecture Diagram][]
-    - [SAS 9.4 Components][]
-    - [SAS Viya Components][]
+  - [Solution Summary](#Summary)
+    - [Objective](#Objective)
+    - [Architecture Overview](#Overview)
+    - [Architecture Diagram](#Architecture)
+    - [SAS 9.4 Components](#SAS9Components)
+    - [SAS Viya Components](#ViyaComponents)
   - [Cost & Licenses](#Cost)
 	- [SAS 9.4 Sizing](#SAS9Sizing)
 	- [SAS Viya Sizing](#ViyaSizing)    
@@ -59,13 +59,15 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
   - [Acknowledgements](#ack)
 
 
+<a name="Summary"></a>
 ## Solution Summary
 This QuickStart is intended to help SAS® customers deploy a cloud-native environment that provides both SAS® 9.4 platform and the SAS® Viya® 3.5 platform in an integrated environment. It is intended to provide an easy way for customers to get a comprehensive SAS environment, that will likely result in faster migrations and deployments into the Microsoft® Azure environment. The SAS ecosystem is deployed on the Azure platform, leveraging Azure native deployment approaches. As part of the deployment, you get all the powerful data management, analytics, and visualization capabilities of SAS, deployed on a high-performance infrastructure.
 
+<a name="Objective"></a>
 ### Objective
 The SAS 9.4 & Viya QuickStart for Azure will take a SAS provided license package for SAS 9.4, Viya and deploy a well-architected SAS platform into the customer’s Azure subscription. The deployment creates a virtual network and other required infrastructure. After the deployment process completes, you will have the necessary details for the endpoints and connection details to log in to the new SAS Ecosystem. By default, QuickStart deployments enable Transport Layer Security (TLS) for secure communication
 
-
+<a name="Overview"></a>
 ### Architecture Overview
 The QuickStart will setup the following environment on Microsoft Azure:
 * A Virtual Network (VNet) configured with public and private subnets. This provides the network infrastructure for your SAS 94 and SAS Viya deployments.
