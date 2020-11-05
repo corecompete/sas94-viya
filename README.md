@@ -32,23 +32,23 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
   - [Cost & Licenses](#cost-&-license)
 	- [SAS 9.4 Sizing](#sas-9.4-sizing)
 	- [SAS Viya Sizing](#sas-viya-sizing)    
-  - [Pre-Requisites](#pre-requisites)
+  - [PreRequisites](#prerequisites)
     - [Download SAS Software for 9.4 and Viya](#Download)
     - [Upload the SAS Software to an Azure File Share](#Upload)
   - [Best Practices When Deploying SAS Viya on Azure](#Best)
   - [Deployment Steps](#Deploy)
   - [Additional Deployment Details](#moredetails)
-    - [User Accounts](#useraccounts)
+    - [User Accounts](#user-accounts)
   - [Usage](#usage)
-    - [Remote Desktop Login](#rdp)
+    - [Remote Desktop Login](#remote-desktop-login)
     - [Accessing SAS 9.4 Application](#sas9app)
-    - [Accessing SAS Viya Application](#viyaapp)
-    - [Review QuickStart Deployment Outputs](#outputs)
+    - [Accessing SAS Viya Application](#accessing-SAS-Viya-Application)
+    - [Review QuickStart Deployment Outputs](#review-quickstart-deployment-outputs)
   - [Troubleshooting](#troubleshooting)
-    - [Important File and Folder Locations](#locations)
-    - [Review the Log Files](#reviewlogs)
-    - [Review SAS 9.4 Services Log Files](#sas9logs)
-    - [Review SAS Viya Services Log Files](#viyalogs)
+    - [Important File and Folder Locations](#important-file-and-folder-locations)
+    - [Review the Log Files](#review-the-log-files)
+    - [Review SAS 9.4 Services Log Files](#Review-SAS-9.4-Services-Log-Files)
+    - [Review SAS Viya Services Log Files](#Review-SAS-Viya-Services-Log-Files)
     - [Restart SAS 9.4 Services](#sas9services)
     - [Restart SAS Viya Services](#viyaservices)
   - [Appendix](#appendix)
@@ -182,7 +182,6 @@ Before deploying SAS Quickstart Template for Azure, you must have the following:
 * A SAS Software Order Confirmation Email that contains supported Quickstart products.
     The license file {emailed from SAS as `SAS_Viya_deployment_data.zip`} which describes your SAS Viya Software Order and SAS 9.4 software order details required to download the sasdepot.
 
-<a name="Download"></a>
 ### Download SAS Software for 9.4 and Viya
 
 * Follow the SAS Instruction to [download the SAS 9.4 Software](https://documentation.sas.com/?docsetId=biig&docsetTarget=n03005intelplatform00install.htm&docsetVersion=9.4&locale=en)
@@ -192,7 +191,6 @@ Before deploying SAS Quickstart Template for Azure, you must have the following:
 
 		mirrormgr  mirror  --deployment-data  <path-to-SAS_Viya_deployment_data>.zip --path <location-of-mirror-repository> --log-file mirrormgr.log --platform 64-redhat-linux-6  --latest
  
-<a name="Upload"></a>
 ### Upload the SAS Software to an Azure File Share
 The QuickStart deployment requires parameters related to the license file and SAS Depot Location, which will be available once you upload the SAS 9.4 and Viya Depot and License files to Azure File Share.
 
@@ -213,13 +211,11 @@ The QuickStart deployment requires parameters related to the license file and SA
  **Get Storage Account Access key** - Follow the Microsoft Azure instructions to "[view storage account access key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)"
 
  
-<a name="Best"></a>
 ## Best Practices When Deploying SAS Viya on Azure
 We recommend the following as best practices:
 * Create a separate resource group for each Quickstart deployment. For more information, see [Resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups).
 * In resource groups that contain a Quickstart deployment, include only the Quickstart deployment in the resource group to facilitate the deletion of the deployment as a unit.
 
-<a name="Deploy"></a>
 ## Deployment Steps
 You can click the "Deploy to Azure" button at the beginning of this document or follow the instructions for a command-line (CLI) deployment using the scripts in the root of this repository.
 
@@ -262,9 +258,9 @@ Below is the list of the Parameters that would require to be filled during the d
 |   Number of Viya CAS Nodes	    |   Required Input<br>Default: 1<br>Min: 1<br>Max: 100 | Number of CAS Worker Nodes required for the deployment.  |
 
 
-<a name="moredetails"></a>
+
 ## Additional Deployment Details
-<a name="useraccounts"></a>
+
 ### User Accounts
 The *vmuser* host operating system account is created during deployment. Use this account to log in via SSH to any of the machines. 
 
@@ -278,9 +274,9 @@ SAS Viya boot user account *sasboot* can be used to login to the application. Yo
 
 
 
-<a name="usage"></a>
+
 ## Usage
-<a name="rdp"></a>
+
 ### Remote Desktop Login
 1.	SSH to the Ansible bastion host using the *vmuser*.
 ```
@@ -293,14 +289,14 @@ ssh root@<anyvmserver>
 3.  Create an RDP tunnel through the bastion host. See the Appendix section for Tunneling instructions.
 4.	RDP to the Windows Server using the user(vmuser) and password (SAS External Password parameter value).
 
-<a name="sas9app"></a>
+
 ### Accessing SAS 9.4 Applicaiton
 The SAS 9.4 clients such as **SAS Enterprise Guide, DI Studio, SAS Enterprise Miner,** and **SAS Management Console** are installed on the Windows RDP. Log in to these applications using the sasdemo user. The password would be the one you specified in the template under the “SAS External Password parameter value.” 
 
-<a name="viyaapp"></a>
+
 The SAS Viya Web applications can be accessed through the Web Brower on the RDP and directly through your browser via SSH Tunnel. See the Appendix section for Tunneling instructions. 
 
-<a name="outputs"></a>
+
 ### Review QuickStart Deployment Outputs
 The following outputs will be provided after the successful execution of the SAS QuickStart Template.
 
@@ -317,7 +313,7 @@ The following outputs will be provided after the successful execution of the SAS
 |   Viya SASDrive	|   `https://<microservices>/SASDrive`	|   URL to access SAS Environment Manager. |
 
 
-<a name="troubleshooting"></a>
+
 ## Troubleshooting
 If your deployment fails:
 * Check to ensure that all the parameters values that are provided are correct and valid.
@@ -327,7 +323,7 @@ If your deployment fails:
 *   In general, issues that occur in the primary deployment but do not originate from a sub-deployment are platform issues such as the inability to obtain sufficient resources in a timely manner. In these cases, you must redeploy your software. When the deployment is run via the CLI, the primary deployment is called "azure-deploy". When the deployment is run via the UI template, the primary deployment is called "Microsoft.Template". The names of sub-deployments usually begin with "Phase#".
 
 
-<a name="locations"></a>
+
 ### Important File and Folder Locations
 Here are some of the Key Locations and files that are useful for troubleshooting and performing any maintenance tasks:
 #### SAS 9.4 Environment
@@ -353,7 +349,7 @@ Here are some of the Key Locations and files that are useful for troubleshooting
 |SASBACKUP  |	Location for SAS Backup and Recovery Tool backup vault.	    | /backup   |
 |   DEPLOYMENTLOGS  |	Location for Deployment Logs. Contains the logs for all phase-wise execution of Pre-Reqs, Install, Config, and Post Deployment scripts. |	/var/logs/sas/install  *or* /sas/install/sas_viya_playbook/deployment.log |
 
-<a name="reviewlogs"></a>
+
 ### Review the Log Files
 Ansible is the primary virtual machine that is used for the installation. Most of the deployment log files reside on the Ansible virtual machine.
 #### Ansible Server Log Files:
@@ -361,17 +357,17 @@ The /var/log/sas/install directory is the primary deployment log directory. Othe
 * runAnsiblePhase*.log files: logs that are produced by the extensions 
 * /etc/facters/facts.d/variables.txt: a listing of the parameters supplied to the start scripts.
 
-<a name="sas9logs"></a>
+
 #### Review SAS 9.4 Services Log Files
 * The SAS 9.4 Services Log files are in this parent directory: /opt/sas/config/Lev1.
 * The location for each SAS 9.4 Service can be computed from [here](https://documentation.sas.com/?docsetId=bisag&docsetTarget=p1ausbmrrybuynn1xnxb6jmdfarz.htm&docsetVersion=9.4&locale=en)
 * Refer to this SAS Note for locating SAS Log files in SAS 9.4 environment: https://support.sas.com/kb/55/426.html
 
-<a name="viyalogs"></a>
+
 #### Review SAS Viya Services Log Files
 * /var/log/sas: parent folder for SAS Viya application logs. If there is a startup issue after installation, the information in these logs might be helpful.
 
-<a name="sas9services"></a>
+
 ### Restart SAS 9.4 Services
 SAS 9.4 Services need to be stopped and started in a particular order to avoid any consequences or issues while accessing the application. 
 ##### Stop/Start SAS Services
@@ -384,7 +380,7 @@ If the services are stopped, then they need to be started on the metadata server
 ```
     /opt/sas/config/Lev1/sas.services start
 ```
-<a name="viyaservices"></a>
+
 ### Restart SAS Viya Services
 While all the services can be started on each box independently, the Viya-Ark toolkit provides an efficient way to restart all the services across all the boxes from the Ansible controller.
 
@@ -402,13 +398,13 @@ cd /sas/install/ansible/sas_viya_playbook/
 ansible-playbook viya-ark/playbooks/viya-mmsu/viya-services-restart.yml -e enable_stray_cleanup=true
 ```
 
-<a name="appendix"></a>
+
 ## Appendix
-<a name="idservices"></a>
+
 #### Configure PAM for SAS Studio
 Because SAS Studio does not use the SAS Logon Manager, it has different requirements for integration with an LDAP system. SAS Studio manages authentication through a pluggable authentication module (PAM). You can use System Security Services Daemon (SSSD) to integrate the PAM configuration on your services machine with your LDAP system. To access SAS Studio, the following conditions must be met:
 
-<a name="sshtunneling"></a>
+
 ### Appendix A: SSH Tunneling
 Port forwarding via SSH (SSH tunneling) creates a secure connection between your local computer and a remote machine through which services can be accessed.
 ##### Step 1
@@ -442,7 +438,7 @@ Open an RDP connection and enter your local IP (127.0.0.1), along with the local
 
 ![](images/rdp_connection.jpg)
 
-<a name="security"></a>
+
 ## Appendix B: Security Considerations
 #### Network Security Groups
 SAS Quickstart for Azure uses the following network security groups to control access to the servers from sources outside the virtual network. All server to server communication between subnets in the SAS  virtual network is permitted.
@@ -462,7 +458,7 @@ SAS Quickstart for Azure uses the following network security groups to control a
 | CASWorker NSG  |  Deny all | Allow All  |  SAS Viya CasWorker | No external connections can be directly made to the server.   |
 
 
-<a name="addDocs"></a>
+
 ## Additional Documentation
 **QuickStart Git Repository:**
 [SAS 9.4 and Viya](https://github.com/corecompete/sas94-viya)
@@ -473,11 +469,11 @@ SAS Quickstart for Azure uses the following network security groups to control a
 
 **Azure Well Architected Framework:** https://docs.microsoft.com/en-us/azure/architecture/framework/
 
-<a name="feedback"></a>
+
 ## Send us Your Feedback
 Please reach out to **Diane Hatcher** (diane.hatcher@corecompete.com) and **Rohit Shetty** (rohit.shetty@corecompete.com) for any feedback or questions on the QuickStart.
 
-<a name="ack"></a>
+
 ## Acknowledgements
 We are thankful to **Intel Corporation** for sponsoring this development effort. We are thankful to **SAS Institute** for supporting this effort and including providing technical guidance and validation.
 
