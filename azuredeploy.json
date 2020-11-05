@@ -216,7 +216,7 @@
         "_artifactsLocation": {
           "type": "string",
           "metadata": {
-              "description": "The base URI where artifacts required by this template are located including a trailing '/'"
+              "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
           },
           "defaultValue": "https://raw.githubusercontent.com/corecompete/sas94-viya/develop_latest/" 
       },
@@ -275,6 +275,7 @@
         "ppg_name": "[concat(parameters('SASApplicationName'),'_ppg_',variables('resourceGroupUniqueString'))]",
         "pub_sub_nw_sg": "[concat(parameters('SASApplicationName'), '_subnt_pub1_nsg')]",
         "pvt_sub_nw_sg": "[concat(parameters('SASApplicationName'), '_subnt_pvt1_nsg')]",
+        "rbacPrincipalID": "[parameters('keyVaultOwnerID')]",
         "rdp_nw_interface": "[concat(parameters('SASApplicationName'),'_',variables('rdp_vm_name'),'_nic')]",
         "rdp_nw_sg": "[concat(parameters('SASApplicationName'),'_',variables('rdp_vm_name'),'_nsg')]",
         "rdp_os_version": "2019-Datacenter",
@@ -1508,7 +1509,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid(variables('ansible_vm_name'),resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('ansible_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -2002,7 +2003,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid('meta',resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('meta_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -2283,7 +2284,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid('compute',resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('compute_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -2555,7 +2556,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid('mid',resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('mid_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -2834,7 +2835,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid('microservices',resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('microservices_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -3077,7 +3078,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid('spre',resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('spre_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -3326,7 +3327,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid('cascontroller',resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', variables('Cascontroller_vm_name')), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
@@ -3574,7 +3575,7 @@
                 },
                 "parameters": {
                     "roleAssignmentName": {
-                        "value": "[guid(concat(variables('casworker_vm_name'), copyIndex()),resourceGroup().id)]"
+                        "value": "[guid(resourceId('Microsoft.Compute/virtualMachines', concat(variables('casworker_vm_name'), copyIndex())), variables('reader_role'), variables('rbacPrincipalID'))]"
                     },
                     "roleDefinitionID": {
                         "value": "[variables('reader_role')]"
