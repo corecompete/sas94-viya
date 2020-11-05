@@ -39,7 +39,7 @@
             }
         },
         "ansibleVMSize": {
-            "defaultValue": "Standard_D2s_v3",
+            "defaultValue": "Standard_D4s_v3",
             "type": "String",
             "metadata": {
                 "description": "This is the SKU for the Mid VM. The default SKU value represents the minimum recommended size for system stability in most SAS software license sets. The selected SKU must support premium disks. For details: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/red-hat/"
