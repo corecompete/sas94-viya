@@ -253,7 +253,7 @@
         "custom_data_sas": "#cloud-config\n mounts:\n   - [ ephemeral0, /saswork]",
         "diagnostic_storagegroup_name": "[toLower(concat(parameters('SASApplicationName'),'diag', variables('resourceGroupUniqueString')))]",
         "domain_name": "internal.cloudapp.net",
-        "key_vault_name": "[concat(parameters('SASApplicationName'),'_keyvault')]",
+        "key_vault_name": "[concat(parameters('SASApplicationName'),'KeyVault')]",
         "key_vault_secretname_pubkey": "ansible-pubkey",
         "key_vault_secretname_pvtkey": "ansible-pvtkey",
         "key_vault_secretname_sasext": "sasextpw",
