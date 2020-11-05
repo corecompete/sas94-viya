@@ -476,4 +476,6 @@ Please reach out to **Diane Hatcher** (diane.hatcher@corecompete.com) and **Rohi
 ## Acknowledgements
 We are thankful to **Intel Corporation** for sponsoring this development effort. We are thankful to **SAS Institute** for supporting this effort and including providing technical guidance and validation.
 
+```
 Tags: SAS, SAS 9.4, Viya, SAS Viya, Core Compete, corecompete, SAS 9.4 and Viya
+```
