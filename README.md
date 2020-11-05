@@ -29,7 +29,7 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
     - [Architecture Diagram](#architecture-diagram)
     - [SAS 9.4 Components](#sas-94-components)
     - [SAS Viya Components](#sas-viya-components)
-  - [Cost and Licenses](#cost-and-license)
+  - [Cost and Licenses](#Cost-and-Licenses)
 	- [SAS 9.4 Sizing](#sas-94-sizing)
 	- [SAS Viya Sizing](#sas-viya-sizing)    
   - [Prerequisites](#prerequisites)
@@ -52,8 +52,8 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
     - [Restart SAS 9.4 Services](#Restart-SAS-94-Services)
     - [Restart SAS Viya Services](#Restart-SAS-Viya-Services)
   - [Appendix](#appendix)
-    - [Appendix A: SSH Tunneling](#Appendix-A:-SSH-Tunneling)
-    - [Appendix B: Security Considerations](#Appendix-B:-Security-Considerations)
+    - [Appendix A SSH Tunneling](#Appendix-A-SSH-Tunneling)
+    - [Appendix B Security Considerations](#Appendix-B-Security-Considerations)
   - [Additional Documentation](#additional-documentation)
   - [Send us Your Feedback](#send-us-your-feedback)
   - [Acknowledgements](#acknowledgements)
@@ -404,7 +404,7 @@ ansible-playbook viya-ark/playbooks/viya-mmsu/viya-services-restart.yml -e enabl
 Because SAS Studio does not use the SAS Logon Manager, it has different requirements for integration with an LDAP system. SAS Studio manages authentication through a pluggable authentication module (PAM). You can use System Security Services Daemon (SSSD) to integrate the PAM configuration on your services machine with your LDAP system. To access SAS Studio, the following conditions must be met:
 
 
-### Appendix A: SSH Tunneling
+### Appendix A SSH Tunneling
 Port forwarding via SSH (SSH tunneling) creates a secure connection between your local computer and a remote machine through which services can be accessed.
 ##### Step 1
 In your PuTTY configuration, configure the Public IP address and Port of your Ansible-Controller/Bastion Host Server. Ansible Controller IP and user details will be available in deployment output in the Azure portal
@@ -438,7 +438,7 @@ Open an RDP connection and enter your local IP (127.0.0.1), along with the local
 ![](images/rdp_connection.jpg)
 
 
-## Appendix B: Security Considerations
+## Appendix B Security Considerations
 #### Network Security Groups
 SAS Quickstart for Azure uses the following network security groups to control access to the servers from sources outside the virtual network. All server to server communication between subnets in the SAS  virtual network is permitted.
 
