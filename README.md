@@ -24,15 +24,15 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
 ## Contents
 - [SAS® 9.4 and SAS Viya® Quickstart Template for Azure](#sas94-viya-quickstart-template-for-azure)
   - [Solution Summary](#solution-summary)
-    - [Objective](#Objective)
-    - [Architecture Overview](#Overview)
-    - [Architecture Diagram](#Architecture)
-    - [SAS 9.4 Components](#SAS9Components)
-    - [SAS Viya Components](#ViyaComponents)
-  - [Cost & Licenses](#Cost)
-	- [SAS 9.4 Sizing](#SAS9Sizing)
-	- [SAS Viya Sizing](#ViyaSizing)    
-  - [Pre-Requisites](#prerequisites)
+    - [Objective](#objective)
+    - [Architecture Overview](#architecture-overview)
+    - [Architecture Diagram](#architecture-diagram)
+    - [SAS 9.4 Components](#sas-9.4-components)
+    - [SAS Viya Components](#sas-viya-components)
+  - [Cost & Licenses](#cost-&-license)
+	- [SAS 9.4 Sizing](#sas-9.4-sizing)
+	- [SAS Viya Sizing](#sas-viya-sizing)    
+  - [Pre-Requisites](#pre-requisites)
     - [Download SAS Software for 9.4 and Viya](#Download)
     - [Upload the SAS Software to an Azure File Share](#Upload)
   - [Best Practices When Deploying SAS Viya on Azure](#Best)
@@ -63,11 +63,11 @@ For assistance with SAS software, contact [SAS Technical Support](https://suppor
 ## Solution Summary
 This QuickStart is intended to help SAS® customers deploy a cloud-native environment that provides both SAS® 9.4 platform and the SAS® Viya® 3.5 platform in an integrated environment. It is intended to provide an easy way for customers to get a comprehensive SAS environment, that will likely result in faster migrations and deployments into the Microsoft® Azure environment. The SAS ecosystem is deployed on the Azure platform, leveraging Azure native deployment approaches. As part of the deployment, you get all the powerful data management, analytics, and visualization capabilities of SAS, deployed on a high-performance infrastructure.
 
-<a name="Objective"></a>
+
 ### Objective
 The SAS 9.4 & Viya QuickStart for Azure will take a SAS provided license package for SAS 9.4, Viya and deploy a well-architected SAS platform into the customer’s Azure subscription. The deployment creates a virtual network and other required infrastructure. After the deployment process completes, you will have the necessary details for the endpoints and connection details to log in to the new SAS Ecosystem. By default, QuickStart deployments enable Transport Layer Security (TLS) for secure communication
 
-<a name="Overview"></a>
+
 ### Architecture Overview
 The QuickStart will setup the following environment on Microsoft Azure:
 * A Virtual Network (VNet) configured with public and private subnets. This provides the network infrastructure for your SAS 94 and SAS Viya deployments.
@@ -82,11 +82,9 @@ The QuickStart will setup the following environment on Microsoft Azure:
 * All the servers are placed in the same proximity placement group.
 
 
-<a name="Architecture"></a>
 ### Architecture Diagram
 ![Architecture Diagram](images/sas94-viya-architecture-diagram.svg)
 
-<a name="SAS9Components"></a>
 #### SAS 9.4 Components
 SAS® 9.4 QuickStart bootstraps the infrastructure for a 3 machine SAS 9.4 environment consisting of:
 
@@ -97,7 +95,6 @@ SAS® 9.4 QuickStart bootstraps the infrastructure for a 3 machine SAS 9.4 envir
 
 It also deploys the SAS Software stack in the machines and performs post-installation steps to validate and secure the mid-tier for encrypted communication. The template will also install SAS desktop clients like SAS® Enterprise Guide®, SAS® Enterprise Miner™, SAS® Data Integration Studio, and SAS® Management Console on the Windows RDP Machine.
 
-<a name="ViyaComponents"></a>
 #### SAS Viya Components
 SAS Viya Quick Start bootstraps the infrastructure required for SAS Viya MPP system consisting of: 
 
@@ -108,14 +105,12 @@ SAS Viya Quick Start bootstraps the infrastructure required for SAS Viya MPP sys
 
 The template will run with pre-requisites to install SAS Viya on these servers and then deploy SAS Viya on the system.
 
-<a name="Cost"></a>
 ## Cost & Licenses
 The user is responsible for the cost of the Azure Cloud services used while running this QuickStart deployment. There is no additional cost for using the QuickStart. You will need a SAS license (emailed from SAS for SAS 9.4 and SAS Viya) to launch this QuickStart. Your SAS account team can advise on the appropriate software licensing and sizing to meet the workload and performance needs. SAS software is typically licensed on maximum number of physical cores for the computational engine.
 
 In Azure, instance sizes are based on virtual CPUs (vcpus) which equates to 2 vcpus per physical core. We provide recommended instance types and sizes, based on physical cores, as a starting point for this deployment. It is important to use server types that support Accelerated Networking and Premium Storage features. You may choose to use larger instances as recommended by SAS sizing guidelines, but we recommend using the instance series noted.
 
 
-<a name="SAS9Sizing"></a>
 ### SAS 9.4 Sizing
 Here are some recommended Machine Types for SAS 9.4 environment:
 
@@ -132,7 +127,7 @@ For **Compute Server**, choose from this list, based on the number of physical c
 
 For the **Mid-Tier server**, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: ** Standard_E8s_v3, or Standard_D8s_v3**.
 
-<a name="ViyaSizing"></a>
+
 ### SAS Viya Sizing
 For SAS Viya, here are the recommendations:
 
@@ -166,8 +161,6 @@ For **CAS Controller Server & Workes **, choose from this list for:
 |   32            |  Standard_E32s_v3 |  256 GB           |  512 GB           |
 
 
-
-<a name="Prerequisites"></a>
 ## Prerequisites
 Before deploying SAS Quickstart Template for Azure, you must have the following:
 
