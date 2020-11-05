@@ -113,7 +113,7 @@ In Azure, instance sizes are based on virtual CPUs (vcpus) which equates to 2 vc
 ### SAS 9.4 Sizing
 Here are some recommended Machine Types for SAS 9.4 environment:
 
-For **Metadata Server**, We recommend ** Standard_D8s_v3**
+For **Metadata Server**, We recommend **Standard_D8s_v3**
 
 For **Compute Server**, choose from this list, based on the number of physical cores you have licensed:
 
@@ -124,7 +124,7 @@ For **Compute Server**, choose from this list, based on the number of physical c
 |   16	          |  Standard_E32s_v3 |	  256 GB          |	 512 GB           |
 |   32            |  Standard_E64s_v3 |   432 GB          |  864 GB           |
 
-For the **Mid-Tier server**, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: ** Standard_E8s_v3, or Standard_D8s_v3**.
+For the **Mid-Tier server**, Start with 4 physical cores with sufficient memory (minimum 40 GB) to support Web Application JVMs, We recommend: **Standard_E8s_v3, or Standard_D8s_v3**.
 
 
 ### SAS Viya Sizing
@@ -151,7 +151,7 @@ SPRE Server is responsible for the computational actions in the Viya environment
 
 **CAS Controller and Workers Nodes:**
 
-For **CAS Controller Server & Workes **, choose from this list for:
+For **CAS Controller Server & Worker**, choose from this list:
 
 |  VCPUS 	  |	Virtual Machine  | SKU	Memory (RAM)  |	Temporary Storage |
 | --------------- | ---------------- | ------------------ | ----------------- |
@@ -237,6 +237,7 @@ Below is the list of the Parameters that would require to be filled during the d
 |   Resource Group Location         |	Required Input	        |   Choose an appropriate location where you would like to launch your Azure resources. Please note, the Storage account with SAS Depot and Mirror Repo should exist in the same Azure region. |
 |   SAS Application Name	        |   Required Input<br>String Input<br>No spaces<br>Length – Minimum 2 & Maximum 5.	|   Choose an Application name to the group and name your resources. We recommend using your company name or project name.  This tag will be used as a prefix for the hostname of the SAS servers and Azure resources. |
 |   Key Vault Owner ID              |	Required Input	        |   Key Vault Owner Object ID Specifies the object ID of a user, service principal in the Azure Active Directory tenant. Obtain it by using Get-AzADUser or Get-AzADServicePrincipal cmdlets. e.g., In Azure Cloud PowerShell type PS>`Get-AzADUser -UserPrincipalName user@domain.com | grep Id`. It is recommended to give the user object id of whomever is deploying the QuickStart. |
+|   Primary User Name        |   Default: vmuser        |   The Admin User to access all the VM created as part of the deployment   |
 |   SSH Public key	                |   Required Input	        |   The SSH public key that will be added to all the servers.   |
 |   Location	                    |   [resourceGroup().location]	|   Azure Resources location, where all the SAS 9.4 and Viya resources should be created. e.g., servers, disks, IP's etc. The default value will pick up the same location as where the resource group is created. |
 |   _artifacts Location	            |   SAS 9.4 and SAS Viya: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sas9.4-viya/  | URL of the public repository where all the templates and dependant artifacts are located in. |
@@ -247,6 +248,8 @@ Below is the list of the Parameters that would require to be filled during the d
 |   Vnet Public Subnet CIDR	        |   Default: 10.10.1.0/24	|   The CIDR block for the Ansible Controller/Bastion Host Public Subnet. |
 |   SAS9.4 Private Subnet CIDR	    |   Default: 10.10.2.0/24	|   The CIDR block for the first private subnet where the SAS 9.4 and RDP machines will be deployed.  |
 |   Viya Private Subnet CIDR	    |   Default: 10.10.3.0/24	    |   The CIDR block for the second private subnet where the SAS Viya machines will be deployed.      |
+|   Ansible VM Size	            |   Required Input<br>Default: Standard_D4s_v3	|  VM Type for Ansible Controller and Bastion Host .    |
+|   Windows RDP VM Size	            |   Required Input<br>Default: Standard_D8s_v3	|   VM Type for Windows SAS Clients Server.    |
 |   SAS9.4 Meta VM Size	            |   Required Input<br>Default: Standard_D8s_v3	|   VM Type for SAS Metadata Server.    |
 |   SAS9.4 Mid VM Size	            |   Required Input<br>Default: Standard_E8s_v3  |	VM Type for SAS Mid VM Server.      |
 |   SAS9.4 Compute VM Size	        |   Required Input<br>Default: Standard_E8s_v3	|   VM Type for SAS Compute Server.     |
@@ -257,11 +260,10 @@ Below is the list of the Parameters that would require to be filled during the d
 |   Number of Viya CAS Nodes	    |   Required Input<br>Default: 1<br>Min: 1<br>Max: 100 | Number of CAS Worker Nodes required for the deployment.  |
 
 
-
 ## Additional Deployment Details
 
 ### User Accounts
-The *vmuser* host operating system account is created during deployment. Use this account to log in via SSH to any of the machines. 
+The default *vmuser* host operating system account is created during deployment. Use this account to log in via SSH to any of the machines. 
 
 SAS External Users such sasinst is used for SAS 9.4 Installation. Create SAS Account to access the application once the deployment is finished.
 
@@ -269,15 +271,13 @@ SAS Users for Viya such sas and cas are created during the deployment. These are
 
 SAS Viya boot user account *sasboot* can be used to login to the application. You will have the URL to reset the password of *sasboot* useraccount from the outputs section on the successful deployment of the Quickstart. 
 
-**Note:**You need to bind your servers and SAS Viya Application with an LDAP Server.
-
-
+**Note:** You need to bind your servers and SAS Viya Application with an LDAP Server.
 
 
 ## Usage
 
 ### Remote Desktop Login
-1.	SSH to the Ansible bastion host using the *vmuser*.
+1.	SSH to the Ansible bastion host with the *vmuser* user.
 ```
 ssh vmuser@<AnsibleControllerIP>
 ```
@@ -287,7 +287,6 @@ ssh root@<anyvmserver>
 ```
 3.  Create an RDP tunnel through the bastion host. See the Appendix section for Tunneling instructions.
 4.	RDP to the Windows Server using the user(vmuser) and password (SAS External Password parameter value).
-
 
 ### Accessing SAS 9.4 Application
 The SAS 9.4 clients such as **SAS Enterprise Guide, DI Studio, SAS Enterprise Miner,** and **SAS Management Console** are installed on the Windows RDP. Log in to these applications using the sasdemo user. The password would be the one you specified in the template under the “SAS External Password parameter value.” 
@@ -312,7 +311,6 @@ The following outputs will be provided after the successful execution of the SAS
 |   Viya SASDrive	|   `https://<microservices>/SASDrive`	|   URL to access SAS Environment Manager. |
 
 
-
 ## Troubleshooting
 If your deployment fails:
 * Check to ensure that all the parameters values that are provided are correct and valid.
@@ -320,7 +318,6 @@ If your deployment fails:
 * Verify the Premium FileShare created in the storage account is accessible to all virtual machines.
 * Review the failed deployment steps and see ["Deployment errors"](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#deployment-errors) in the Azure troubleshooting documentation.
 *   In general, issues that occur in the primary deployment but do not originate from a sub-deployment are platform issues such as the inability to obtain sufficient resources in a timely manner. In these cases, you must redeploy your software. When the deployment is run via the CLI, the primary deployment is called "azure-deploy". When the deployment is run via the UI template, the primary deployment is called "Microsoft.Template". The names of sub-deployments usually begin with "Phase#".
-
 
 
 ### Important File and Folder Locations
