@@ -42,14 +42,14 @@
             "defaultValue": "Standard_D4s_v3",
             "type": "String",
             "metadata": {
-                "description": "This is the SKU for the Mid VM. The default SKU value represents the minimum recommended size for system stability in most SAS software license sets. The selected SKU must support premium disks. For details: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/red-hat/"
+                "description": "This is the SKU for the Ansible VM. The default SKU value represents the minimum recommended size for system stability in most SAS software license sets. The selected SKU must support premium disks. For details: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/red-hat/"
             }
         },
         "windowsRdpVMSize": {
             "defaultValue": "Standard_D8S_v3",
             "type": "String",
             "metadata": {
-                "description": "This is the SKU for the Mid VM. The default SKU value represents the minimum recommended size for system stability in most SAS software license sets. The selected SKU must support premium disks. For details: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/red-hat/"
+                "description": "This is the SKU for the Windows Server VM. The default SKU value represents the minimum recommended size for system stability in most SAS software license sets. The selected SKU must support premium disks"
             }
         },
         "SASMetaVMSize": {
@@ -180,13 +180,15 @@
             "type": "String",
             "metadata": {
                 "description": "Folder Name in Azure File share where SAS94 depot is located"
-            }
+            },
+            "defaultValue": "sasdepot"
         },
         "viyaRepoFolder": {
             "type": "String",
             "metadata": {
                 "description": "Folder Name in Azure File share where SAS Viya Repo is located"
-            }
+            },
+            "defaultValue": "viyarepo"
         },
         "SASServerLicenseFile": {
             "type": "String",
