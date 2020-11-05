@@ -253,7 +253,7 @@
         "custom_data_sas": "#cloud-config\n mounts:\n   - [ ephemeral0, /saswork]",
         "diagnostic_storagegroup_name": "[toLower(concat(parameters('SASApplicationName'),'diag', variables('resourceGroupUniqueString')))]",
         "domain_name": "internal.cloudapp.net",
-        "key_vault_name": "[concat(parameters('SASApplicationName'),'keyVault')]",
+        "key_vault_name": "[concat(parameters('SASApplicationName'),'_keyvault')]",
         "key_vault_secretname_pubkey": "ansible-pubkey",
         "key_vault_secretname_pvtkey": "ansible-pvtkey",
         "key_vault_secretname_sasext": "sasextpw",
@@ -275,8 +275,8 @@
         "mid_nw_sg": "[concat(parameters('SASApplicationName'),'_',variables('mid_vm_name'),'_nsg')]",
         "mid_vm_name": "mid",
         "ppg_name": "[concat(parameters('SASApplicationName'),'_ppg_',variables('resourceGroupUniqueString'))]",
-        "pub_sub_nw_sg": "[concat(parameters('SASApplicationName'), '_subnt_pub1_nsg')]",
-        "pvt_sub_nw_sg": "[concat(parameters('SASApplicationName'), '_subnt_pvt1_nsg')]",
+        "pub_sub_nw_sg": "[concat(parameters('SASApplicationName'), '_subnet_pub1_nsg')]",
+        "pvt_sub_nw_sg": "[concat(parameters('SASApplicationName'), '_subnet_pvt1_nsg')]",
         "rbacPrincipalID": "[parameters('keyVaultOwnerID')]",
         "rdp_nw_interface": "[concat(parameters('SASApplicationName'),'_',variables('rdp_vm_name'),'_nic')]",
         "rdp_nw_sg": "[concat(parameters('SASApplicationName'),'_',variables('rdp_vm_name'),'_nsg')]",
@@ -307,9 +307,9 @@
         "spre_vm_name": "spre",
         "tenantId": "[subscription().tenantId]",
         "vnet_name": "[concat(parameters('SASApplicationName'),'_vnet')]",
-        "vnet_pub_subnt": "[concat(parameters('SASApplicationName'),'_vnet_pub1_subnt')]",
-        "vnet_pvt_subnt": "[concat(parameters('SASApplicationName'), '_vnet_pvt1_subnt')]",
-        "vnet_viya_pvt_subnt": "[concat(parameters('SASApplicationName'), '_vnet_pvt2_subnt')]",
+        "vnet_pub_subnt": "[concat(parameters('SASApplicationName'),'_vnet_pub1_subnet')]",
+        "vnet_pvt_subnt": "[concat(parameters('SASApplicationName'), '_vnet_pvt1_subnet')]",
+        "vnet_viya_pvt_subnt": "[concat(parameters('SASApplicationName'), '_vnet_pvt2_subnet')]",
         "windows_extension_template": "[uri(parameters('_artifactsLocation'), concat('nestedtemplates/vm_windows_extension.json', parameters('_artifactsLocationSasToken')))]"
     },
     "resources": [
@@ -3318,7 +3318,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            "name": "CAScontrollerRoleAssignment",
+            "name": "CASControllerRoleAssignment",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', variables('Cascontroller_vm_name'))]"
             ],
@@ -3343,7 +3343,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            "name": "CAScontrollerAccessPolicy",
+            "name": "CASControllerAccessPolicy",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', variables('Cascontroller_vm_name'))]",
                 "[resourceID('Microsoft.Resources/deployments','MicroServicesAccessPolicy')]",
