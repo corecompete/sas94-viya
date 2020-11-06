@@ -29,9 +29,6 @@ sasext_secret_name=`facter sasext_secret_name`
 pub_keyname=`facter pub_keyname`
 res_dir="/opt/sas/resources/responsefiles"
 resource_dir="/opt/sas/resources"
-#plan_file_url=${artifact_loc}properties/plan.xml
-#metainstall_url=${artifact_loc}properties/meta_install.properties
-#metaconfig_url=${artifact_loc}properties/meta_config.properties
 inst_prop=${resource_dir}/meta_install.properties
 conf_prop=${resource_dir}/meta_config.properties
 properties_uri=${artifact_loc}response-properties.tar.gz
@@ -104,14 +101,13 @@ cp -rv /sasdepot/${depot_loc}/sid_files/${sas_sid} /opt/sas/resources/
 if [ ! -d $res_dir ]; then
     mkdir -p $res_dir
 fi
-#wget -P /opt/sas/resources/ $plan_file_url
-#wget -P $res_dir $metainstall_url 
-#wget -P $res_dir $metaconfig_url
 
 wget $properties_uri
 tar -xzvf response-properties.tar.gz -C ${res_dir}
 cp -p ${res_dir}/plan.xml ${resource_dir}
 cp -p ${res_dir}/meta_* ${resource_dir}
+
+chown -R sasinst:sas ${resource_dir}
 
 ##Chaning the settings in property files
 sed -i "s/domain_name/${domain_name}/g" $resource_dir/*.properties

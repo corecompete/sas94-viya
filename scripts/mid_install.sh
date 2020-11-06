@@ -31,9 +31,6 @@ pub_keyname=`facter pub_keyname`
 artifact_loc=`facter artifact_loc`
 res_dir="/opt/sas/resources/responsefiles"
 resource_dir="/opt/sas/resources"
-#plan_file_url="${artifact_loc}properties/plan.xml"
-#midinstall_url="${artifact_loc}properties/mid_install.properties"
-#midconfig_url="${artifact_loc}properties/mid_config.properties"
 inst_prop=${resource_dir}/mid_install.properties
 conf_prop=${resource_dir}/mid_config.properties
 properties_uri=${artifact_loc}response-properties.tar.gz
@@ -102,14 +99,12 @@ if [ ! -d $res_dir ]; then
     mkdir -p $res_dir
 fi
 
-#wget -P /opt/sas/resources/ $plan_file_url
-#wget -P $res_dir $midinstall_url
-#wget -P $res_dir $midconfig_url
 wget $properties_uri
 tar -xzvf response-properties.tar.gz -C ${res_dir}
 cp -p ${res_dir}/plan.xml ${resource_dir}
 cp -p ${res_dir}/mid_* ${resource_dir}
 
+chown -R sasinst:sas ${resource_dir}
 
 #Changing the settings in property files
 sed -i "s/domain_name/${domain_name}/g" $resource_dir/*.properties

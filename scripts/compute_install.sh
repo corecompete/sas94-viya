@@ -28,9 +28,6 @@ mid_host=`facter mid_hostname`
 sasint_secret_name=`facter sasint_secret_name`
 sasext_secret_name=`facter sasext_secret_name`
 pub_keyname=`facter pub_keyname`
-#plan_file_url=${artifact_loc}properties/plan.xml
-#computeinstall_url=${artifact_loc}properties/compute_install.properties
-#computeconfig_url=${artifact_loc}properties/compute_config.properties
 res_dir="/opt/sas/resources/responsefiles"
 resource_dir="/opt/sas/resources"
 inst_prop=$resource_dir/compute_install.properties
@@ -111,15 +108,12 @@ if [ ! -d $res_dir ]; then
     mkdir -p $res_dir
 fi
 
+#Downloading the plan file and property files required for SAS install
 wget $properties_uri
 tar -xzvf response-properties.tar.gz -C ${res_dir}
 cp -p ${res_dir}/plan.xml ${resource_dir}
 cp -p ${res_dir}/compute_* ${resource_dir}
-
-#Downloading the plan file and property files required for SAS install
-#wget -P /opt/sas/resources/ $plan_file_url
-#wget -P $res_dir $computeinstall_url
-#wget -P $res_dir $computeconfig_url
+chown -R sasinst:sas ${resource_dir}
 
 #Altering the property files
 sed -i "s/domain_name/${domain_name}/g" $resource_dir/*.properties
