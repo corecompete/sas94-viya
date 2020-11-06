@@ -103,7 +103,6 @@ wget $properties_uri
 tar -xzvf response-properties.tar.gz -C ${res_dir}
 cp -p ${res_dir}/plan.xml ${resource_dir}
 cp -p ${res_dir}/mid_* ${resource_dir}
-
 chown -R sasinst:sas ${resource_dir}
 
 #Changing the settings in property files
