@@ -4,9 +4,9 @@
     "parameters": {
         "SASApplicationName": {
             "minLength": 2,
-            "maxLength": 5,
+            "maxLength": 6,
             "type": "String",
-            "defaultValue": "sasvi",
+            "defaultValue": "sasapp",
             "metadata": {
                 "description": "This tag will be used as a prefix for the hostname of the SAS servers and Azure resources"
             }
