@@ -7,7 +7,8 @@ param (
 	[string]$app_name,
 	[string]$mid_name,
 	[string]$domain_name,
-	[string]$artifact_loc,
+    [string]$artifact_loc,
+    [string]$artifactsLocationSasToken,
 	$code=99
 )
 #Function for Error Handling
@@ -24,12 +25,13 @@ $logdir = "C:\saslog"
 $mid_fqdn= "${app_name}${mid_name}.${domain_name}"
 New-Item -Path $logdir -ItemType directory
 
-Invoke-WebRequest -Uri https://github.com/corecompete/sasinstalls/archive/main.zip -OutFile sasinstall.zip
+$cli_source_file = $artifact_loc + "properties\clients_install.properties" + $artifactsLocationSasToken
+Invoke-WebRequest $cli_source_file -OutFile ${logdir}\clients_install.properties
+ExitWithCode
+$plan_source_file = $artifact_loc + "properties\plan.xml" + $artifactsLocationSasToken
+Invoke-WebRequest $plan_source_file -OutFile ${logdir}\plan.xml
 ExitWithCode
 
-Expand-Archive -LiteralPath sasinstall.zip -DestinationPath sasinstalls
-Move-Item -path sasinstalls\sasinstalls-main\clients_install.properties -Destination  ${logdir}\clients_install.properties
-Move-Item -path sasinstalls\sasinstalls-main\plan.xml -Destination ${logdir}\plan.xml
 (Get-Content -path ${logdir}\clients_install.properties -Raw) -replace 'client_sid',$clients_sid | Add-Content -Path ${logdir}\clients_install_new.properties
 Remove-Item -Path ${logdir}\clients_install.properties
 Move-Item -Path ${logdir}\clients_install_new.properties -Destination ${logdir}\clients_install.properties

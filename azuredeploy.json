@@ -86,8 +86,7 @@
             "type": "string",
             "metadata": {
                 "description": "Username for the Virtual Machine."
-            },
-            "defaultValue": "vmuser"
+            }
         },        
         "SASExternalPassword": {
             "minLength": 12,
@@ -217,17 +216,17 @@
         },
         "_artifactsLocation": {
           "type": "string",
+          "defaultValue": "https://raw.githubusercontent.com/corecompete/sas94-viya/develop_latest/" ,
           "metadata": {
               "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
-          },
-          "defaultValue": "https://raw.githubusercontent.com/corecompete/sas94-viya/develop_latest/" 
+          }
       },
       "_artifactsLocationSasToken": {
           "type": "securestring",
+          "defaultValue": "",
           "metadata": {
               "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
-          },
-          "defaultValue": ""
+          }
       }
     },
     "variables": {
@@ -1872,7 +1871,7 @@
                         "value": "[variables('rdp_vm_name')]"
                     },
                     "commandToExecute": {
-                        "value": "[concat('powershell -ExecutionPolicy Unrestricted -File sas_clients.ps1 ','-stg_acc_name ',parameters('storageAccountName'),' -stg_key ',parameters('storageAccountKey'),' -file_share_name ',parameters('fileShareName'),' -depot_folder_name ',parameters('SASDepotFolder'),' -clients_sid ',parameters('SASServerLicenseFile'),' -app_name ',parameters('SASApplicationName'),' -mid_name ',variables('mid_vm_name'),' -domain_name ',variables('domain_name'),' -artifact_loc ',parameters('_artifactsLocation'))]"
+                        "value": "[concat('powershell -ExecutionPolicy Unrestricted -File sas_clients.ps1 ','-stg_acc_name ',parameters('storageAccountName'),' -stg_key ',parameters('storageAccountKey'),' -file_share_name ',parameters('fileShareName'),' -depot_folder_name ',parameters('SASDepotFolder'),' -clients_sid ',parameters('SASServerLicenseFile'),' -app_name ',parameters('SASApplicationName'),' -mid_name ',variables('mid_vm_name'),' -domain_name ',variables('domain_name'),' -artifact_loc ',parameters('_artifactsLocation'),' -artifactsLocationSasToken ',parameters('_artifactsLocationSasToken'))]"
                     },
                     "filepath": {
                         "value": "sas_clients.ps1"
