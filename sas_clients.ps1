@@ -8,7 +8,8 @@ param (
 	[string]$mid_name,
 	[string]$domain_name,
     [string]$artifact_loc,
-    [string]$artifactsLocationSasToken,
+    [string]$clientproperties,
+    [string]$clientplan,
 	$code=99
 )
 #Function for Error Handling
@@ -25,11 +26,9 @@ $logdir = "C:\saslog"
 $mid_fqdn= "${app_name}${mid_name}.${domain_name}"
 New-Item -Path $logdir -ItemType directory
 
-$cli_source_file = $artifact_loc + "properties\clients_install.properties" + $artifactsLocationSasToken
-Invoke-WebRequest $cli_source_file -OutFile ${logdir}\clients_install.properties
+Invoke-WebRequest $clientproperties -OutFile ${logdir}\clients_install.properties
 ExitWithCode
-$plan_source_file = $artifact_loc + "properties\plan.xml" + $artifactsLocationSasToken
-Invoke-WebRequest $plan_source_file -OutFile ${logdir}\plan.xml
+Invoke-WebRequest $clientplan -OutFile ${logdir}\plan.xml
 ExitWithCode
 
 (Get-Content -path ${logdir}\clients_install.properties -Raw) -replace 'client_sid',$clients_sid | Add-Content -Path ${logdir}\clients_install_new.properties
