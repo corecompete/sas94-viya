@@ -2094,10 +2094,46 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "MetaContentFileDownload",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines',variables('meta_vm_name'))]",
+                "[resourceId('Microsoft.Resources/deployments','Phase1-MetaHostSetup')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('meta_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp response-properties.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/response-properties.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "Phase2-MetaInstall",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines',variables('meta_vm_name'))]",
-                "[resourceId('Microsoft.Resources/deployments','Phase1-MetaHostSetup')]",
+                "[resourceId('Microsoft.Resources/deployments','MetaContentFileDownload')]",
                 "[resourceId('Microsoft.Resources/deployments','Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
@@ -2374,10 +2410,45 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "ComputeContentFileDownload",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines',variables('compute_vm_name'))]",
+                "[resourceId('Microsoft.Resources/deployments','Phase1-ComputeHostSetup')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('compute_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp response-properties.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/response-properties.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "Phase2-ComputeInstall",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines',variables('compute_vm_name'))]",
-                "[resourceId('Microsoft.Resources/deployments','Phase1-ComputeHostSetup')]",
+                "[resourceId('Microsoft.Resources/deployments','ComputeContentFileDownload')]",
                 "[resourceId('Microsoft.Resources/deployments','Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
@@ -2646,10 +2717,45 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "MidContentFileDownload",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines',variables('mid_vm_name'))]",
+                "[resourceId('Microsoft.Resources/deployments','Phase1-MidHostSetup')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('mid_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp response-properties.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/response-properties.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "Phase2-MidInstall",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines',variables('mid_vm_name'))]",
-                "[resourceId('Microsoft.Resources/deployments','Phase1-MidHostSetup')]",
+                "[resourceId('Microsoft.Resources/deployments','MidContentFileDownload')]",
                 "[resourceId('Microsoft.Resources/deployments','Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
@@ -2925,9 +3031,44 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "MicroServicesContentFileDownload",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines',variables('microservices_vm_name'))]",
+                "[resourceId('Microsoft.Resources/deployments','Phase1-MicroServicesHostSetup')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('microservices_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp viya-ark.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/viya-ark.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "Phase2-MicroServicesViyaARK",
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/deployments', 'Phase1-MicroServicesHostSetup')]",
+                "[resourceId('Microsoft.Resources/deployments', 'MicroServicesContentFileDownload')]",
                 "[resourceId('Microsoft.Resources/deployments', 'Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
@@ -3168,9 +3309,44 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "SpreContentFileDownload",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines',variables('spre_vm_name'))]",
+                "[resourceId('Microsoft.Resources/deployments','Phase1-SpreHostSetup')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('spre_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp viya-ark.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/viya-ark.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "Phase2-SpreViyaARK",
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/deployments','Phase1-SpreHostSetup')]",
+                "[resourceId('Microsoft.Resources/deployments','SpreContentFileDownload')]",
                 "[resourceId('Microsoft.Resources/deployments', 'Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
@@ -3417,9 +3593,44 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "CASContentFileDownload",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines',variables('Cascontroller_vm_name'))]",
+                "[resourceId('Microsoft.Resources/deployments','Phase1-CASControllerHostSetup')]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('Cascontroller_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp viya-ark.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/viya-ark.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "Phase2-CASControllerViyaARK",
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/deployments', 'Phase1-CASControllerHostSetup')]",
+                "[resourceId('Microsoft.Resources/deployments', 'CASContentFileDownload')]",
                 "[resourceId('Microsoft.Resources/deployments', 'Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
@@ -3675,13 +3886,53 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
+            "name": "WorkerContentFileDownload",
+			"copy": {
+                "name": "casworkerdownloadextensioncopy",
+                "count": "[parameters('numberOfViyaCASNodes')]",
+				"mode": "serial",
+                "batchSize": 1
+            },
+            "dependsOn": [
+					"[resourceId('Microsoft.Resources/deployments', concat('Phase1-',variables('casworker_vm_name'), copyIndex(),'Hostsetup'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('linux_extension_template')]"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[concat(variables('casworker_vm_name'), copyIndex())]"
+                    },
+                    "commandToExecute": {
+                        "value": "cp viya-ark.tar.gz /tmp"
+                    },
+                    "filepath": {
+                        "value": "properties/viya-ark.tar.gz"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
             "name": "[concat('Phase2-',variables('casworker_vm_name'), copyIndex(),'ViyaARK')]",
             "copy": {
                 "name": "casworkerviyaarkcopy",
                 "count": "[parameters('numberOfViyaCASNodes')]"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/deployments', concat('Phase1-',variables('casworker_vm_name'), copyIndex(),'Hostsetup'))]",
+                "casworkerdownloadextensioncopy",
                 "[resourceId('Microsoft.Resources/deployments', 'Phase1-AnsibleHostSetup')]"
             ],
             "properties": {
