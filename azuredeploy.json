@@ -1857,9 +1857,44 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            "name": "Phase1-SASClientInstall",
+            "name": "RDPContentFileDownload",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', variables('rdp_vm_name'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('windows_extension_template')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "vmName": {
+                        "value": "[variables('rdp_vm_name')]"
+                    },
+                    "commandToExecute": {
+                        "value": "powershell.exe Expand-Archive -LiteralPath client_install.zip -Destination C:\\WindowsAzure\\client_install"
+                    },
+                    "filepath": {
+                        "value": "properties/client_install.zip"
+                    },
+                    "_artifactsLocation": {
+                        "value": "[parameters('_artifactsLocation')]"
+                    },
+                    "_artifactsLocationSasToken": {
+                        "value": "[parameters('_artifactsLocationSasToken')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "Phase1-SASClientInstall",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'RDPContentFileDownload')]"
             ],
             "properties": {
                 "mode": "Incremental",
