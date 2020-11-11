@@ -12,16 +12,7 @@ param (
     [string]$clientplan,
     $code = 99
 )
-#Function for Error Handling
-function ExitWithCode { 
-    if ($? -eq "true") {
-        write-host("Commnad executed successfully")
-    }
-    else {
-        write-host("Commnad execution failed ")
-        exit $code
-    } 
-}
+
 Set-PSDebug -Trace 1;
 $logdir = "C:\saslog"
 $mid_fqdn = "${app_name}${mid_name}.${domain_name}"
@@ -52,7 +43,7 @@ else {
 }
 Set-Location "Z:\${depot_folder_name}"
 .\setup.exe -lang en -deploy -datalocation C:\saslog -responsefile ${logdir}\clients_install.properties -quiet 
-ExitWithCode
+
 Start-Sleep -Seconds 1800
 $latest = Get-ChildItem -Path ${logdir}\deployw* | Sort-Object LastAccessTime -Descending | Select-Object -First 1
 $latest.name
