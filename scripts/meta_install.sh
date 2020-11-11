@@ -29,7 +29,6 @@ sasext_secret_name=`facter sasext_secret_name`
 pub_keyname=`facter pub_keyname`
 res_dir="/opt/sas/resources/responsefiles"
 resource_dir="/opt/sas/resources"
-#sas_properties_file=`facter sas_properties_file`
 inst_prop=${resource_dir}/meta_install.properties
 conf_prop=${resource_dir}/meta_config.properties
 
@@ -103,7 +102,6 @@ if [ ! -d $res_dir ]; then
     mkdir -p $res_dir
 fi
 
-#wget $sas_properties_file
 #Extracting the property files
 tar -xzvf /tmp/response-properties.tar.gz -C ${res_dir}
 cp -p ${res_dir}/plan.xml ${resource_dir}
