@@ -3886,7 +3886,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
-            "name": "WorkerContentFileDownload",
+            "name": "[concat('WorkerContentFileDownload', copyIndex())]",
 			"copy": {
                 "name": "casworkerdownloadextensioncopy",
                 "count": "[parameters('numberOfViyaCASNodes')]",
