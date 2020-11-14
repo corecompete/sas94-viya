@@ -42,6 +42,7 @@ sas_sid=${15}
 sas_role=${16}
 artifact_loc=${17}
 stgacc_secr_name=${18}
+cifs_server_fqdn=${19}
 mid_hostname=${1}${12}
 meta_hostname=${1}${13}
 compute_hostname=${1}${14}
@@ -98,7 +99,7 @@ else
 fi
 
 
-yum -y install java firefox xclock x11* xauth python compat-glibc libpng12 lsof at numactl glibc libpng ntp apr ksh wget mlocate libXext.x86_64 libXp.x86_64 libXtst.x86_64 xorg-x11-xauth.x86_64 gcc libSM.i686 libXrender.i686 zlib.i686 nfs-utils cifs-utils telnet
+yum -y install java firefox xclock x11* xauth python git compat-glibc libpng12 lsof at numactl glibc libpng ntp apr ksh wget mlocate libXext.x86_64 libXp.x86_64 libXtst.x86_64 xorg-x11-xauth.x86_64 gcc libSM.i686 libXrender.i686 zlib.i686 nfs-utils cifs-utils telnet
 fail_if_error $? "ERROR: PreRequisites installation failed"
 
 #System settings 

@@ -15,15 +15,15 @@ app_name=`facter application_name`
 artifact_loc=`facter artifact_loc`
 depot_loc=`facter sasdepot_folder`
 res_dir="/opt/sas/resources/responsefiles"
-ssl_prop_url=${artifact_loc}properties/ssl_cert.properties
-inst_prop=${res_dir}/meta_install.properties
-conf_prop=${res_dir}/meta_config.properties
-cert_prop=${res_dir}/ssl_cert.properties
+resource_dir="/opt/sas/resources"
+inst_prop=${resource_dir}/meta_install.properties
+conf_prop=${resource_dir}/meta_config.properties
+cert_prop=${resource_dir}/ssl_cert.properties
 
-#Downloading SAS SSL properties file
-wget -P $res_dir $ssl_prop_url
+cp -p ${res_dir}/ssl_cert.properties ${resource_dir}
+
 ##Altering the certificate in property file
-sed -i "s|certname|${app_name}|g" ${res_dir}/ssl_cert.properties
+sed -i "s|certname|${app_name}|g" ${resource_dir}/ssl_cert.properties
 #Add certificate to trustedstore
 su - sasinst -c "time /opt/sas/home/SASDeploymentManager/9.4/sasdm.sh -deploy -responsefile ${cert_prop} -lang en -loglevel 2 -templocation /opt/sas/temp -quiet"
 fail_if_error $? "ERROR: SAS certificate update failed. Please check logs"
